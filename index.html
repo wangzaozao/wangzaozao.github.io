@@ -61,53 +61,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-leetcode" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/26/leetcode/" class="article-date">
-  <time datetime="2017-10-26T12:42:58.000Z" itemprop="datePublished">2017-10-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/26/leetcode/">leetcode</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>Arithmetic Slices<br>A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.</li>
-</ol>
-<p>For example, these are arithmetic sequence:</p>
-<p>1, 3, 5, 7, 9<br>7, 7, 7, 7<br>3, -1, -5, -9<br>The following sequence is not arithmetic.</p>
-<p>1, 1, 2, 5, 7<br>A zero-indexed array A consisting of N numbers is given. A slice of that array is any pair of integers (P, Q) such that 0 &lt;= P &lt; Q &lt; N.</p>
-<p>A slice (P, Q) of array A is called arithmetic if the sequence:<br>A[P], A[p + 1], …, A[Q - 1], A[Q] is arithmetic. In particular, this means that P + 1 &lt; Q.</p>
-<p>The function should return the number of arithmetic slices in the array A.</p>
-<p>Example:</p>
-<p>A = [1, 2, 3, 4]</p>
-<p>return: 3, for 3 arithmetic slices in A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] itself.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</div><div class="line">        int n=A.size();</div><div class="line">        vector&lt;int&gt;dp(n,0);</div><div class="line">        <span class="keyword">if</span>(n&lt;3)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        int result=0;</div><div class="line">        <span class="keyword">for</span>(int i=2;i&lt;n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>((A[i]-A[i-1])==(A[i-1]-A[i-2]))</div><div class="line">                dp[i]=dp[i-1]+1;//以第i个数结尾增加了几个Arithmetic Slices</div><div class="line">            result+=dp[i];</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/26/leetcode/" data-id="cj98hwf7t0001g8nl8mfszswd" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/23/hello-world/" class="article-date">
@@ -143,7 +96,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/23/hello-world/" data-id="cj98hwf7j0000g8nleq8gvrd2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/23/hello-world/" data-id="cj98ihock000038nlws7c2hk8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -181,10 +134,6 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2017/10/26/leetcode/">leetcode</a>
-          </li>
         
           <li>
             <a href="/2017/10/23/hello-world/">Hello World</a>
