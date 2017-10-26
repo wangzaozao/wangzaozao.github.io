@@ -5,16 +5,16 @@
   
   <title>LeetCode-413. Arithmetic Slices | Hello world</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#413. Arithmetic Slices ##DescriptionA sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same. For exa">
+  <meta name="description" content="413. Arithmetic SlicesDescriptionA sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same. For example">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode-413. Arithmetic Slices">
 <meta property="og:url" content="http://yoursite.com/2017/10/26/LeetCode413/index.html">
 <meta property="og:site_name" content="Hello world">
-<meta property="og:description" content="#413. Arithmetic Slices ##DescriptionA sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same. For exa">
-<meta property="og:updated_time" content="2017-10-26T13:47:17.094Z">
+<meta property="og:description" content="413. Arithmetic SlicesDescriptionA sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same. For example">
+<meta property="og:updated_time" content="2017-10-26T13:50:04.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode-413. Arithmetic Slices">
-<meta name="twitter:description" content="#413. Arithmetic Slices ##DescriptionA sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same. For exa">
+<meta name="twitter:description" content="413. Arithmetic SlicesDescriptionA sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same. For example">
   
     <link rel="alternate" href="/atom.xml" title="Hello world" type="application/atom+xml">
   
@@ -85,20 +85,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#<a href="https://leetcode.com/problems/arithmetic-slices/description/" target="_blank" rel="external">413. Arithmetic Slices</a></p>
-<p>##Description<br>A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.</p>
+        <h1 id="413-Arithmetic-Slices"><a href="#413-Arithmetic-Slices" class="headerlink" title="413. Arithmetic Slices"></a><a href="https://leetcode.com/problems/arithmetic-slices/description/" target="_blank" rel="external">413. Arithmetic Slices</a></h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.</p>
 <p>For example, these are arithmetic sequence:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1, 3, 5, 7, 9</div><div class="line">7, 7, 7, 7</div><div class="line">3, -1, -5, -9</div></pre></td></tr></table></figure></p>
 <p>The following sequence is not arithmetic.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1, 1, 2, 5, 7</div></pre></td></tr></table></figure></p>
 <p>A zero-indexed array A consisting of N numbers is given. A slice of that array is any pair of integers (P, Q) such that 0 &lt;= P &lt; Q &lt; N.</p>
 <p>A slice (P, Q) of array A is called arithmetic if the sequence:<br>A[P], A[p + 1], …, A[Q - 1], A[Q] is arithmetic. In particular, this means that P + 1 &lt; Q.</p>
 <p>The function should return the number of arithmetic slices in the array A.</p>
-<p>##Example<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">A = [1, 2, 3, 4]</div><div class="line"></div><div class="line"><span class="built_in">return</span>: 3, <span class="keyword">for</span> 3 arithmetic slices <span class="keyword">in</span> A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] itself.</div></pre></td></tr></table></figure></p>
-<p>##Demo<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</div><div class="line">        int n=A.size();</div><div class="line">        vector&lt;int&gt;dp(n,0);</div><div class="line">        <span class="keyword">if</span>(n&lt;3)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        int result=0;</div><div class="line">        <span class="keyword">for</span>(int i=2;i&lt;n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>((A[i]-A[i-1])==(A[i-1]-A[i-2]))</div><div class="line">                dp[i]=dp[i-1]+1;//以第i个数结尾增加了几个Arithmetic Slices</div><div class="line">            result+=dp[i];</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">A = [1, 2, 3, 4]</div><div class="line"></div><div class="line"><span class="built_in">return</span>: 3, <span class="keyword">for</span> 3 arithmetic slices <span class="keyword">in</span> A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] itself.</div></pre></td></tr></table></figure>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</div><div class="line">        int n=A.size();</div><div class="line">        vector&lt;int&gt;dp(n,0);</div><div class="line">        <span class="keyword">if</span>(n&lt;3)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        int result=0;</div><div class="line">        <span class="keyword">for</span>(int i=2;i&lt;n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>((A[i]-A[i-1])==(A[i-1]-A[i-2]))</div><div class="line">                dp[i]=dp[i-1]+1;//以第i个数结尾增加了几个Arithmetic Slices</div><div class="line">            result+=dp[i];</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/26/LeetCode413/" data-id="cj98iwp6h0000rwnllvcvhyur" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/26/LeetCode413/" data-id="cj98j08dt0001qknlajj85esa" class="article-share-link">Share</a>
       
       
     </footer>
