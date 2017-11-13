@@ -61,6 +61,88 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-LeetCode230" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/13/LeetCode230/" class="article-date">
+  <time datetime="2017-11-13T01:35:20.000Z" itemprop="datePublished">2017-11-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/13/LeetCode230/">LeetCode230</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="230-Kth-Smallest-Element-in-a-BST"><a href="#230-Kth-Smallest-Element-in-a-BST" class="headerlink" title="230. Kth Smallest Element in a BST"></a><a href="https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/" target="_blank" rel="external">230. Kth Smallest Element in a BST</a></h1><p>Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.</p>
+<p>Note:<br>You may assume k is always valid, 1 ≤ k ≤ BST’s total elements.</p>
+<h2 id="Demo-经典的二叉搜索"><a href="#Demo-经典的二叉搜索" class="headerlink" title="Demo(经典的二叉搜索)"></a>Demo(经典的二叉搜索)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> a binary tree node.</div><div class="line"> * struct TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int calcLeftsize(TreeNode*root)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(root==NULL)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        <span class="keyword">else</span> </div><div class="line">            <span class="built_in">return</span> (1+calcLeftsize(root-&gt;left)+calcLeftsize(root-&gt;right));</div><div class="line">    &#125;</div><div class="line">    int kthSmallest(TreeNode* root, int k) &#123;</div><div class="line">        <span class="keyword">if</span>(!root)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        int leftSize=calcLeftsize(root-&gt;left);//这里很重要，是计算root-&gt;left的大小</div><div class="line">        <span class="keyword">if</span>(leftSize==k-1)</div><div class="line">            <span class="built_in">return</span> root-&gt;val;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(leftSize&gt;=k)</div><div class="line">            <span class="built_in">return</span> kthSmallest(root-&gt;left,k);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="built_in">return</span> kthSmallest(root-&gt;right,k-leftSize-1);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>//在二叉搜索树种，找到第K个元素。<br>算法如下：<br>1、计算左子树元素个数left。<br>2、 left+1 = K，则根节点即为第K个元素<br>      left &gt;=k, 则第K个元素在左子树中，<br>     left +1 &lt;k, 则转换为在右子树中，寻找第K-left-1元素。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/13/LeetCode230/" data-id="cj9xj05wk0001k8nlwvzhkt9j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-LeetCode167" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/13/LeetCode167/" class="article-date">
+  <time datetime="2017-11-13T01:34:51.000Z" itemprop="datePublished">2017-11-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/13/LeetCode167/">LeetCode167</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="167-Two-Sum-II-Input-array-is-sorted"><a href="#167-Two-Sum-II-Input-array-is-sorted" class="headerlink" title="167. Two Sum II - Input array is sorted"></a><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/" target="_blank" rel="external">167. Two Sum II - Input array is sorted</a></h1><p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
+<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.</p>
+<p>You may assume that each input would have exactly one solution and you may not use the same element twice.</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: numbers=&#123;2, 7, 11, 15&#125;, target=9</div><div class="line">Output: index1=1, index2=2</div></pre></td></tr></table></figure>
+<h2 id="Demo-经典的二叉搜索方法"><a href="#Demo-经典的二叉搜索方法" class="headerlink" title="Demo(经典的二叉搜索方法)"></a>Demo(经典的二叉搜索方法)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) &#123;</div><div class="line">        int low=0;</div><div class="line">        int high=numbers.size()-1;</div><div class="line">        <span class="keyword">while</span>(numbers[low]+numbers[high]!=target)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(numbers[low]+numbers[high]&lt;target)</div><div class="line">                low++;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                high--;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> vector&lt;int&gt;(&#123;low+1,high+1&#125;);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/13/LeetCode167/" data-id="cj9xj05vd0000k8nl83o7spjm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉搜索/">二叉搜索</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-LeetCode695" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/06/LeetCode695/" class="article-date">
@@ -92,7 +174,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/06/LeetCode695/" data-id="cj9p05hrr00046snl3vjycwdk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/06/LeetCode695/" data-id="cj9xj05y7000ak8nl3zhva11a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/">dfs</a></li></ul>
@@ -139,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/02/hello-world/" data-id="cj9p05hru00056snlwveya69a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/02/hello-world/" data-id="cj9xj05xd0007k8nlpckpk536" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/02/LeetCode39/" data-id="cj9p05hrg00016snlcu31rw9h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/02/LeetCode39/" data-id="cj9xj05x80005k8nl5f3afd0l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/回溯法/">回溯法</a></li></ul>
@@ -236,7 +318,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/31/LeetCode392/" data-id="cj9p05hr500006snljxpoo4za" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/31/LeetCode392/" data-id="cj9xj05x30004k8nlapw1od4u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -279,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/26/LeetCode413/" data-id="cj9p05hrl00026snlzkrp9x3r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/26/LeetCode413/" data-id="cj9xj05wx0003k8nl7t0ze38p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -301,7 +383,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回溯法/">回溯法</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二叉搜索/">二叉搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回溯法/">回溯法</a></li></ul>
     </div>
   </div>
 
@@ -311,7 +393,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/回溯法/" style="font-size: 10px;">回溯法</a>
+      <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/二叉搜索/" style="font-size: 10px;">二叉搜索</a> <a href="/tags/回溯法/" style="font-size: 10px;">回溯法</a>
     </div>
   </div>
 
@@ -333,6 +415,14 @@
       <ul>
         
           <li>
+            <a href="/2017/11/13/LeetCode230/">LeetCode230</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/13/LeetCode167/">LeetCode167</a>
+          </li>
+        
+          <li>
             <a href="/2017/11/06/LeetCode695/">LeetCode-695. Max Area of Island</a>
           </li>
         
@@ -342,14 +432,6 @@
         
           <li>
             <a href="/2017/11/02/LeetCode39/">LeetCode-A series of Combination Sum</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/31/LeetCode392/">LeetCode-392. Is Subsequence</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/26/LeetCode413/">LeetCode-413. Arithmetic Slices</a>
           </li>
         
       </ul>
