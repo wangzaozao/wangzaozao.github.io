@@ -75,7 +75,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/15/LeetCode287/">LeetCode287</a>
+      <a class="article-title" href="/2017/11/15/LeetCode287/">LeetCode-287. Find the Duplicate Number</a>
     </h1>
   
 
@@ -83,14 +83,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="287-Find-the-Duplicate-Number"><a href="#287-Find-the-Duplicate-Number" class="headerlink" title="287. Find the Duplicate Number"></a><a href="https://leetcode.com/problems/find-the-duplicate-number/description/" target="_blank" rel="external">287. Find the Duplicate Number</a></h1><p>Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/find-the-duplicate-number/description/" target="_blank" rel="external">Description</a></h1><p>Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.</p>
 <p>Note:<br>You must not modify the array (assume the array is read only).<br>You must use only constant, O(1) extra space.<br>Your runtime complexity should be less than O(n2).<br>There is only one duplicate number in the array, but it could be repeated more than once.</p>
-<h2 id="Demo-经典的二分法"><a href="#Demo-经典的二分法" class="headerlink" title="Demo(经典的二分法)"></a>Demo(经典的二分法)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int findDuplicate(vector&lt;int&gt;&amp; nums) &#123;</div><div class="line">        int min=1;</div><div class="line">        int max=nums.size() - 1;//nums.size()</div><div class="line">        int mid;</div><div class="line">        <span class="keyword">while</span>(min&lt;max)</div><div class="line">        &#123;</div><div class="line">            int cnt=0; //cnt为不大于中位数的数字个数</div><div class="line">            mid=(min+max)/2;//用加法求中位数比用减法好</div><div class="line">            <span class="keyword">for</span>(int i=0;i&lt;nums.size();i++)//这里注意不是有序数组，所以不能随着每次范围的变小减小数组个数的搜索</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(nums[i]&lt;=mid)</div><div class="line">                    cnt++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(cnt&gt;mid)</div><div class="line">            &#123;</div><div class="line">                max=mid;    //如果不大于mid的数字个数比mid多的话，则重复数字应该出现在[low, mid]之间</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                min=mid+1; //如果不大于mid的数字个数比mid少的话，说明重复的数字出现在后半段中[mid+1，high]</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> min;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="Demo-二分法"><a href="#Demo-二分法" class="headerlink" title="Demo(二分法)"></a>Demo(二分法)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int findDuplicate(vector&lt;int&gt;&amp; nums) &#123;</div><div class="line">        int min=1;</div><div class="line">        int max=nums.size() - 1;//nums.size()</div><div class="line">        int mid;</div><div class="line">        <span class="keyword">while</span>(min&lt;max)</div><div class="line">        &#123;</div><div class="line">            int cnt=0; //cnt为不大于中位数的数字个数</div><div class="line">            mid=(min+max)/2;//用加法求中位数比用减法好</div><div class="line">            <span class="keyword">for</span>(int i=0;i&lt;nums.size();i++)//这里注意不是有序数组，所以不能随着每次范围的变小减小数组个数的搜索</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(nums[i]&lt;=mid)</div><div class="line">                    cnt++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(cnt&gt;mid)</div><div class="line">            &#123;</div><div class="line">                max=mid;    //如果不大于mid的数字个数比mid多的话，则重复数字应该出现在[low, mid]之间</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                min=mid+1; //如果不大于mid的数字个数比mid少的话，说明重复的数字出现在后半段中[mid+1，high]</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> min;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/15/LeetCode287/" data-id="cja0pv48k000184nle0ealqq6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/15/LeetCode287/" data-id="cja0q9xky00036onlken3p1om" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -116,7 +116,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/13/LeetCode230/">LeetCode230</a>
+      <a class="article-title" href="/2017/11/13/LeetCode230/">LeetCode-230. Kth Smallest Element in a BST</a>
     </h1>
   
 
@@ -124,17 +124,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="230-Kth-Smallest-Element-in-a-BST"><a href="#230-Kth-Smallest-Element-in-a-BST" class="headerlink" title="230. Kth Smallest Element in a BST"></a><a href="https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/" target="_blank" rel="external">230. Kth Smallest Element in a BST</a></h1><p>Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/" target="_blank" rel="external">Description</a></h1><p>Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.</p>
 <p>Note:<br>You may assume k is always valid, 1 ≤ k ≤ BST’s total elements.</p>
-<h2 id="Demo-经典的二叉搜索"><a href="#Demo-经典的二叉搜索" class="headerlink" title="Demo(经典的二叉搜索)"></a>Demo(经典的二叉搜索)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> a binary tree node.</div><div class="line"> * struct TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int calcLeftsize(TreeNode*root)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(root==NULL)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        <span class="keyword">else</span> </div><div class="line">            <span class="built_in">return</span> (1+calcLeftsize(root-&gt;left)+calcLeftsize(root-&gt;right));</div><div class="line">    &#125;</div><div class="line">    int kthSmallest(TreeNode* root, int k) &#123;</div><div class="line">        <span class="keyword">if</span>(!root)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        int leftSize=calcLeftsize(root-&gt;left);//这里很重要，是计算root-&gt;left的大小</div><div class="line">        <span class="keyword">if</span>(leftSize==k-1)</div><div class="line">            <span class="built_in">return</span> root-&gt;val;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(leftSize&gt;=k)</div><div class="line">            <span class="built_in">return</span> kthSmallest(root-&gt;left,k);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="built_in">return</span> kthSmallest(root-&gt;right,k-leftSize-1);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="Demo-二叉搜索"><a href="#Demo-二叉搜索" class="headerlink" title="Demo(二叉搜索)"></a>Demo(二叉搜索)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> a binary tree node.</div><div class="line"> * struct TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int calcLeftsize(TreeNode*root)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(root==NULL)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        <span class="keyword">else</span> </div><div class="line">            <span class="built_in">return</span> (1+calcLeftsize(root-&gt;left)+calcLeftsize(root-&gt;right));</div><div class="line">    &#125;</div><div class="line">    int kthSmallest(TreeNode* root, int k) &#123;</div><div class="line">        <span class="keyword">if</span>(!root)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        int leftSize=calcLeftsize(root-&gt;left);//这里很重要，是计算root-&gt;left的大小</div><div class="line">        <span class="keyword">if</span>(leftSize==k-1)</div><div class="line">            <span class="built_in">return</span> root-&gt;val;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(leftSize&gt;=k)</div><div class="line">            <span class="built_in">return</span> kthSmallest(root-&gt;left,k);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="built_in">return</span> kthSmallest(root-&gt;right,k-leftSize-1);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>//在二叉搜索树种，找到第K个元素。<br>算法如下：<br>1、计算左子树元素个数left。<br>2、 left+1 = K，则根节点即为第K个元素<br>      left &gt;=k, 则第K个元素在左子树中，<br>     left +1 &lt;k, 则转换为在右子树中，寻找第K-left-1元素。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/LeetCode230/" data-id="cja0pv483000084nlfefrks16" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/LeetCode230/" data-id="cja0q9xks00016onl0q0taupn" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
+
     </footer>
   </div>
   
@@ -156,7 +158,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/13/LeetCode167/">LeetCode167</a>
+      <a class="article-title" href="/2017/11/13/LeetCode167/">LeetCode-167. Two Sum II - Input array is sorted</a>
     </h1>
   
 
@@ -164,18 +166,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="167-Two-Sum-II-Input-array-is-sorted"><a href="#167-Two-Sum-II-Input-array-is-sorted" class="headerlink" title="167. Two Sum II - Input array is sorted"></a><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/" target="_blank" rel="external">167. Two Sum II - Input array is sorted</a></h1><p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/" target="_blank" rel="external">Description</a></h1><p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
 <p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.</p>
 <p>You may assume that each input would have exactly one solution and you may not use the same element twice.</p>
 <h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: numbers=&#123;2, 7, 11, 15&#125;, target=9</div><div class="line">Output: index1=1, index2=2</div></pre></td></tr></table></figure>
-<h2 id="Demo-经典的二叉搜索方法"><a href="#Demo-经典的二叉搜索方法" class="headerlink" title="Demo(经典的二叉搜索方法)"></a>Demo(经典的二叉搜索方法)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) &#123;</div><div class="line">        int low=0;</div><div class="line">        int high=numbers.size()-1;</div><div class="line">        <span class="keyword">while</span>(numbers[low]+numbers[high]!=target)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(numbers[low]+numbers[high]&lt;target)</div><div class="line">                low++;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                high--;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> vector&lt;int&gt;(&#123;low+1,high+1&#125;);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="Demo-二叉搜索"><a href="#Demo-二叉搜索" class="headerlink" title="Demo(二叉搜索)"></a>Demo(二叉搜索)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) &#123;</div><div class="line">        int low=0;</div><div class="line">        int high=numbers.size()-1;</div><div class="line">        <span class="keyword">while</span>(numbers[low]+numbers[high]!=target)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(numbers[low]+numbers[high]&lt;target)</div><div class="line">                low++;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                high--;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> vector&lt;int&gt;(&#123;low+1,high+1&#125;);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/LeetCode167/" data-id="cja0pv49v000984nlc1h48rof" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/LeetCode167/" data-id="cja0q9xkm00006onlm0j0r1ji" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉搜索/">二叉搜索</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
 
     </footer>
   </div>
@@ -210,15 +212,16 @@
 <p>Find the maximum area of an island in the given 2D array. (If there is no island, the maximum area is 0.)</p>
 <h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[[0,0,1,0,0,0,0,1,0,0,0,0,0],</div><div class="line"> [0,0,0,0,0,0,0,1,1,1,0,0,0],</div><div class="line"> [0,1,1,0,1,0,0,0,0,0,0,0,0],</div><div class="line"> [0,1,0,0,1,1,0,0,1,0,1,0,0],</div><div class="line"> [0,1,0,0,1,1,0,0,1,1,1,0,0],</div><div class="line"> [0,0,0,0,0,0,0,0,0,0,1,0,0],</div><div class="line"> [0,0,0,0,0,0,0,1,1,1,0,0,0],</div><div class="line"> [0,0,0,0,0,0,0,1,1,0,0,0,0]]</div><div class="line">Given the above grid, <span class="built_in">return</span> 6. Note the answer is not 11, because the island must be connected 4-directionally.</div></pre></td></tr></table></figure>
 <h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[[0,0,0,0,0,0,0,0]]</div><div class="line">Given the above grid, <span class="built_in">return</span> 0.</div><div class="line">Note: The length of each dimension <span class="keyword">in</span> the given grid does not exceed 50.</div></pre></td></tr></table></figure>
-<h2 id="Demo1-用的dfs"><a href="#Demo1-用的dfs" class="headerlink" title="Demo1(用的dfs)"></a>Demo1(用的dfs)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int maxAreaOfIsland(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</div><div class="line">        int m,n,area=0;</div><div class="line">        m=grid.size();n=grid[0].size();</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;m;i++)</div><div class="line">            <span class="keyword">for</span>(int j=0;j&lt;n;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(grid[i][j]==1)</div><div class="line">                    area=max(area,dfs(grid,i,j));</div><div class="line">            &#125;</div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line">private:</div><div class="line">    int dfs(vector&lt;vector&lt;int&gt;&gt;&amp;grid,int row,int col)</div><div class="line">    &#123;</div><div class="line">        int m,n,area=1;</div><div class="line">        int r,c;</div><div class="line">        grid[row][col]=2;</div><div class="line">        vector&lt;int&gt;dir(&#123;-1,0,1,0,-1&#125;);</div><div class="line">        m=grid.size();</div><div class="line">        n=grid[0].size();  </div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;4;i++)</div><div class="line">        &#123;</div><div class="line">            r=row+dir[i];//这个地方r和row要分开，不然r一直是累加的</div><div class="line">            c=col+dir[i+1];</div><div class="line">            <span class="keyword">if</span>(r&gt;=0&amp;&amp;r&lt;m&amp;&amp;c&gt;=0&amp;&amp;c&lt;n&amp;&amp;grid[r][c]==1)</div><div class="line">                area+=dfs(grid,r,c);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="Demo1-用的dfs"><a href="#Demo1-用的dfs" class="headerlink" title="Demo1(用的dfs)"></a>Demo1(用的dfs)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int maxAreaOfIsland(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</div><div class="line">        int m,n,area=0;</div><div class="line">        m=grid.size();n=grid[0].size();</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;m;i++)</div><div class="line">            <span class="keyword">for</span>(int j=0;j&lt;n;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(grid[i][j]==1)</div><div class="line">                    area=max(area,dfs(grid,i,j));</div><div class="line">            &#125;</div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line">    int dfs(vector&lt;vector&lt;int&gt;&gt;&amp;grid,int row,int col)</div><div class="line">    &#123;</div><div class="line">        int m,n,area=1;</div><div class="line">        int r,c;</div><div class="line">        grid[row][col]=2;</div><div class="line">        vector&lt;int&gt;dir(&#123;-1,0,1,0,-1&#125;);</div><div class="line">        m=grid.size();</div><div class="line">        n=grid[0].size();  </div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;4;i++)</div><div class="line">        &#123;</div><div class="line">            r=row+dir[i];//这个地方r和row要分开，不然r一直是累加的</div><div class="line">            c=col+dir[i+1];</div><div class="line">            <span class="keyword">if</span>(r&gt;=0&amp;&amp;r&lt;m&amp;&amp;c&gt;=0&amp;&amp;c&lt;n&amp;&amp;grid[r][c]==1)</div><div class="line">                area+=dfs(grid,r,c);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="Demo2-用的bfs"><a href="#Demo2-用的bfs" class="headerlink" title="Demo2(用的bfs)"></a>Demo2(用的bfs)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int maxAreaOfIsland(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</div><div class="line">        int m,n,area=0;</div><div class="line">        m=grid.size();n=grid[0].size();</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;m;i++)</div><div class="line">            <span class="keyword">for</span>(int j=0;j&lt;n;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(grid[i][j]==1)</div><div class="line">                    area=max(area,bfs(grid,i,j));</div><div class="line">            &#125;</div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int bfs(vector&lt;vector&lt;int&gt;&gt;&amp;grid,int row,int col)</div><div class="line">    &#123;</div><div class="line">        int m,n,area=1;</div><div class="line">        int row1,col1;</div><div class="line">        int r,c;</div><div class="line">        queue&lt;pair&lt;int,int&gt;&gt;myq;</div><div class="line">        myq.push(&#123;row,col&#125;);</div><div class="line">        grid[row][col]=2;</div><div class="line">        vector&lt;int&gt;dir(&#123;-1,0,1,0,-1&#125;);</div><div class="line">        m=grid.size();</div><div class="line">        n=grid[0].size();  </div><div class="line">        <span class="keyword">while</span>(!myq.empty())</div><div class="line">        &#123;</div><div class="line">            row1=myq.front().first;//不是first()</div><div class="line">            col1=myq.front().second;</div><div class="line">            myq.pop();</div><div class="line">            <span class="keyword">for</span>(int i=0;i&lt;4;i++)</div><div class="line">            &#123;</div><div class="line">                r=row1+dir[i];//这个地方r和row要分开，不然r一直是累加的</div><div class="line">                c=col1+dir[i+1];</div><div class="line">                <span class="keyword">if</span>(r&gt;=0&amp;&amp;r&lt;m&amp;&amp;c&gt;=0&amp;&amp;c&lt;n&amp;&amp;grid[r][c]==1)</div><div class="line">                &#123;</div><div class="line">                    area++;</div><div class="line">                    grid[r][c]=2;</div><div class="line">                    myq.push(&#123;r,c&#125;);</div><div class="line">                &#125;</div><div class="line">            &#125;                       </div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/06/LeetCode695/" data-id="cja0pv4au000d84nlav7hp4f1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/06/LeetCode695/" data-id="cja0q9xl800096onlgawuseqo" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/">dfs</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs-bfs/">dfs bfs</a></li></ul>
 
     </footer>
   </div>
@@ -262,7 +265,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/02/hello-world/" data-id="cja0pv49j000784nlzlqa8423" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/02/hello-world/" data-id="cja0q9xlb000c6onl17z86pcv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -316,7 +319,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/02/LeetCode39/" data-id="cja0pv49a000484nlhjwvndvf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/02/LeetCode39/" data-id="cja0q9xl200056onlfvm3utf2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/回溯法/">回溯法</a></li></ul>
@@ -359,7 +362,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/31/LeetCode392/" data-id="cja0pv49e000584nlln22nr22" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/31/LeetCode392/" data-id="cja0q9xl000046onl4zjwomze" class="article-share-link">Share</a>
       
       
     </footer>
@@ -402,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/26/LeetCode413/" data-id="cja0pv49p000884nlsfqwlkk6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/26/LeetCode413/" data-id="cja0q9xl600086onlh4si7rno" class="article-share-link">Share</a>
       
       
     </footer>
@@ -424,7 +427,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二叉搜索/">二叉搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回溯法/">回溯法</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs-bfs/">dfs bfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回溯法/">回溯法</a></li></ul>
     </div>
   </div>
 
@@ -434,7 +437,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/二分法/" style="font-size: 10px;">二分法</a> <a href="/tags/二叉搜索/" style="font-size: 10px;">二叉搜索</a> <a href="/tags/回溯法/" style="font-size: 10px;">回溯法</a>
+      <a href="/tags/dfs-bfs/" style="font-size: 10px;">dfs bfs</a> <a href="/tags/二分法/" style="font-size: 20px;">二分法</a> <a href="/tags/回溯法/" style="font-size: 10px;">回溯法</a>
     </div>
   </div>
 
@@ -456,15 +459,15 @@
       <ul>
         
           <li>
-            <a href="/2017/11/15/LeetCode287/">LeetCode287</a>
+            <a href="/2017/11/15/LeetCode287/">LeetCode-287. Find the Duplicate Number</a>
           </li>
         
           <li>
-            <a href="/2017/11/13/LeetCode230/">LeetCode230</a>
+            <a href="/2017/11/13/LeetCode230/">LeetCode-230. Kth Smallest Element in a BST</a>
           </li>
         
           <li>
-            <a href="/2017/11/13/LeetCode167/">LeetCode167</a>
+            <a href="/2017/11/13/LeetCode167/">LeetCode-167. Two Sum II - Input array is sorted</a>
           </li>
         
           <li>

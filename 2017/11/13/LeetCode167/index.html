@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>LeetCode167 | 就喜欢你看不惯我，又干不掉我的样子~</title>
+  <title>LeetCode-167. Two Sum II - Input array is sorted | 就喜欢你看不惯我，又干不掉我的样子~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="167. Two Sum II - Input array is sortedGiven an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number. The function twoSum sho">
-<meta name="keywords" content="二叉搜索">
+  <meta name="description" content="DescriptionGiven an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number. The function twoSum should return indices of the tw">
+<meta name="keywords" content="二分法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode167">
+<meta property="og:title" content="LeetCode-167. Two Sum II - Input array is sorted">
 <meta property="og:url" content="http://yoursite.com/2017/11/13/LeetCode167/index.html">
 <meta property="og:site_name" content="就喜欢你看不惯我，又干不掉我的样子~">
-<meta property="og:description" content="167. Two Sum II - Input array is sortedGiven an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number. The function twoSum sho">
-<meta property="og:updated_time" content="2017-11-13T01:40:08.332Z">
+<meta property="og:description" content="DescriptionGiven an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number. The function twoSum should return indices of the tw">
+<meta property="og:updated_time" content="2017-11-15T07:27:53.836Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode167">
-<meta name="twitter:description" content="167. Two Sum II - Input array is sortedGiven an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number. The function twoSum sho">
+<meta name="twitter:title" content="LeetCode-167. Two Sum II - Input array is sorted">
+<meta name="twitter:description" content="DescriptionGiven an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number. The function twoSum should return indices of the tw">
   
     <link rel="alternate" href="/atom.xml" title="就喜欢你看不惯我，又干不掉我的样子~" type="application/atom+xml">
   
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      LeetCode167
+      LeetCode-167. Two Sum II - Input array is sorted
     </h1>
   
 
@@ -86,18 +86,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="167-Two-Sum-II-Input-array-is-sorted"><a href="#167-Two-Sum-II-Input-array-is-sorted" class="headerlink" title="167. Two Sum II - Input array is sorted"></a><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/" target="_blank" rel="external">167. Two Sum II - Input array is sorted</a></h1><p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/" target="_blank" rel="external">Description</a></h1><p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
 <p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.</p>
 <p>You may assume that each input would have exactly one solution and you may not use the same element twice.</p>
 <h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: numbers=&#123;2, 7, 11, 15&#125;, target=9</div><div class="line">Output: index1=1, index2=2</div></pre></td></tr></table></figure>
-<h2 id="Demo-经典的二叉搜索方法"><a href="#Demo-经典的二叉搜索方法" class="headerlink" title="Demo(经典的二叉搜索方法)"></a>Demo(经典的二叉搜索方法)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) &#123;</div><div class="line">        int low=0;</div><div class="line">        int high=numbers.size()-1;</div><div class="line">        <span class="keyword">while</span>(numbers[low]+numbers[high]!=target)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(numbers[low]+numbers[high]&lt;target)</div><div class="line">                low++;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                high--;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> vector&lt;int&gt;(&#123;low+1,high+1&#125;);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="Demo-二叉搜索"><a href="#Demo-二叉搜索" class="headerlink" title="Demo(二叉搜索)"></a>Demo(二叉搜索)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) &#123;</div><div class="line">        int low=0;</div><div class="line">        int high=numbers.size()-1;</div><div class="line">        <span class="keyword">while</span>(numbers[low]+numbers[high]!=target)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(numbers[low]+numbers[high]&lt;target)</div><div class="line">                low++;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                high--;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> vector&lt;int&gt;(&#123;low+1,high+1&#125;);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/LeetCode167/" data-id="cja0pv49v000984nlc1h48rof" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/LeetCode167/" data-id="cja0q9xkm00006onlm0j0r1ji" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二叉搜索/">二叉搜索</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
 
     </footer>
   </div>
@@ -109,7 +109,7 @@
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          LeetCode230
+          LeetCode-230. Kth Smallest Element in a BST
         
       </div>
     </a>
@@ -136,7 +136,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二叉搜索/">二叉搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回溯法/">回溯法</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs-bfs/">dfs bfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回溯法/">回溯法</a></li></ul>
     </div>
   </div>
 
@@ -146,7 +146,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/二分法/" style="font-size: 10px;">二分法</a> <a href="/tags/二叉搜索/" style="font-size: 10px;">二叉搜索</a> <a href="/tags/回溯法/" style="font-size: 10px;">回溯法</a>
+      <a href="/tags/dfs-bfs/" style="font-size: 10px;">dfs bfs</a> <a href="/tags/二分法/" style="font-size: 20px;">二分法</a> <a href="/tags/回溯法/" style="font-size: 10px;">回溯法</a>
     </div>
   </div>
 
@@ -168,15 +168,15 @@
       <ul>
         
           <li>
-            <a href="/2017/11/15/LeetCode287/">LeetCode287</a>
+            <a href="/2017/11/15/LeetCode287/">LeetCode-287. Find the Duplicate Number</a>
           </li>
         
           <li>
-            <a href="/2017/11/13/LeetCode230/">LeetCode230</a>
+            <a href="/2017/11/13/LeetCode230/">LeetCode-230. Kth Smallest Element in a BST</a>
           </li>
         
           <li>
-            <a href="/2017/11/13/LeetCode167/">LeetCode167</a>
+            <a href="/2017/11/13/LeetCode167/">LeetCode-167. Two Sum II - Input array is sorted</a>
           </li>
         
           <li>

@@ -6,13 +6,13 @@
   <title>LeetCode-695. Max Area of Island | 就喜欢你看不惯我，又干不掉我的样子~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="DescriptionGiven a non-empty 2D array grid of 0’s and 1’s, an island is a group of 1’s (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid">
-<meta name="keywords" content="dfs">
+<meta name="keywords" content="dfs bfs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode-695. Max Area of Island">
 <meta property="og:url" content="http://yoursite.com/2017/11/06/LeetCode695/index.html">
 <meta property="og:site_name" content="就喜欢你看不惯我，又干不掉我的样子~">
 <meta property="og:description" content="DescriptionGiven a non-empty 2D array grid of 0’s and 1’s, an island is a group of 1’s (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid">
-<meta property="og:updated_time" content="2017-11-07T02:34:09.588Z">
+<meta property="og:updated_time" content="2017-11-15T07:31:00.003Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode-695. Max Area of Island">
 <meta name="twitter:description" content="DescriptionGiven a non-empty 2D array grid of 0’s and 1’s, an island is a group of 1’s (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid">
@@ -90,15 +90,16 @@
 <p>Find the maximum area of an island in the given 2D array. (If there is no island, the maximum area is 0.)</p>
 <h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[[0,0,1,0,0,0,0,1,0,0,0,0,0],</div><div class="line"> [0,0,0,0,0,0,0,1,1,1,0,0,0],</div><div class="line"> [0,1,1,0,1,0,0,0,0,0,0,0,0],</div><div class="line"> [0,1,0,0,1,1,0,0,1,0,1,0,0],</div><div class="line"> [0,1,0,0,1,1,0,0,1,1,1,0,0],</div><div class="line"> [0,0,0,0,0,0,0,0,0,0,1,0,0],</div><div class="line"> [0,0,0,0,0,0,0,1,1,1,0,0,0],</div><div class="line"> [0,0,0,0,0,0,0,1,1,0,0,0,0]]</div><div class="line">Given the above grid, <span class="built_in">return</span> 6. Note the answer is not 11, because the island must be connected 4-directionally.</div></pre></td></tr></table></figure>
 <h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[[0,0,0,0,0,0,0,0]]</div><div class="line">Given the above grid, <span class="built_in">return</span> 0.</div><div class="line">Note: The length of each dimension <span class="keyword">in</span> the given grid does not exceed 50.</div></pre></td></tr></table></figure>
-<h2 id="Demo1-用的dfs"><a href="#Demo1-用的dfs" class="headerlink" title="Demo1(用的dfs)"></a>Demo1(用的dfs)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int maxAreaOfIsland(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</div><div class="line">        int m,n,area=0;</div><div class="line">        m=grid.size();n=grid[0].size();</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;m;i++)</div><div class="line">            <span class="keyword">for</span>(int j=0;j&lt;n;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(grid[i][j]==1)</div><div class="line">                    area=max(area,dfs(grid,i,j));</div><div class="line">            &#125;</div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line">private:</div><div class="line">    int dfs(vector&lt;vector&lt;int&gt;&gt;&amp;grid,int row,int col)</div><div class="line">    &#123;</div><div class="line">        int m,n,area=1;</div><div class="line">        int r,c;</div><div class="line">        grid[row][col]=2;</div><div class="line">        vector&lt;int&gt;dir(&#123;-1,0,1,0,-1&#125;);</div><div class="line">        m=grid.size();</div><div class="line">        n=grid[0].size();  </div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;4;i++)</div><div class="line">        &#123;</div><div class="line">            r=row+dir[i];//这个地方r和row要分开，不然r一直是累加的</div><div class="line">            c=col+dir[i+1];</div><div class="line">            <span class="keyword">if</span>(r&gt;=0&amp;&amp;r&lt;m&amp;&amp;c&gt;=0&amp;&amp;c&lt;n&amp;&amp;grid[r][c]==1)</div><div class="line">                area+=dfs(grid,r,c);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="Demo1-用的dfs"><a href="#Demo1-用的dfs" class="headerlink" title="Demo1(用的dfs)"></a>Demo1(用的dfs)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int maxAreaOfIsland(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</div><div class="line">        int m,n,area=0;</div><div class="line">        m=grid.size();n=grid[0].size();</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;m;i++)</div><div class="line">            <span class="keyword">for</span>(int j=0;j&lt;n;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(grid[i][j]==1)</div><div class="line">                    area=max(area,dfs(grid,i,j));</div><div class="line">            &#125;</div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line">    int dfs(vector&lt;vector&lt;int&gt;&gt;&amp;grid,int row,int col)</div><div class="line">    &#123;</div><div class="line">        int m,n,area=1;</div><div class="line">        int r,c;</div><div class="line">        grid[row][col]=2;</div><div class="line">        vector&lt;int&gt;dir(&#123;-1,0,1,0,-1&#125;);</div><div class="line">        m=grid.size();</div><div class="line">        n=grid[0].size();  </div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;4;i++)</div><div class="line">        &#123;</div><div class="line">            r=row+dir[i];//这个地方r和row要分开，不然r一直是累加的</div><div class="line">            c=col+dir[i+1];</div><div class="line">            <span class="keyword">if</span>(r&gt;=0&amp;&amp;r&lt;m&amp;&amp;c&gt;=0&amp;&amp;c&lt;n&amp;&amp;grid[r][c]==1)</div><div class="line">                area+=dfs(grid,r,c);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="Demo2-用的bfs"><a href="#Demo2-用的bfs" class="headerlink" title="Demo2(用的bfs)"></a>Demo2(用的bfs)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int maxAreaOfIsland(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</div><div class="line">        int m,n,area=0;</div><div class="line">        m=grid.size();n=grid[0].size();</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;m;i++)</div><div class="line">            <span class="keyword">for</span>(int j=0;j&lt;n;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(grid[i][j]==1)</div><div class="line">                    area=max(area,bfs(grid,i,j));</div><div class="line">            &#125;</div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int bfs(vector&lt;vector&lt;int&gt;&gt;&amp;grid,int row,int col)</div><div class="line">    &#123;</div><div class="line">        int m,n,area=1;</div><div class="line">        int row1,col1;</div><div class="line">        int r,c;</div><div class="line">        queue&lt;pair&lt;int,int&gt;&gt;myq;</div><div class="line">        myq.push(&#123;row,col&#125;);</div><div class="line">        grid[row][col]=2;</div><div class="line">        vector&lt;int&gt;dir(&#123;-1,0,1,0,-1&#125;);</div><div class="line">        m=grid.size();</div><div class="line">        n=grid[0].size();  </div><div class="line">        <span class="keyword">while</span>(!myq.empty())</div><div class="line">        &#123;</div><div class="line">            row1=myq.front().first;//不是first()</div><div class="line">            col1=myq.front().second;</div><div class="line">            myq.pop();</div><div class="line">            <span class="keyword">for</span>(int i=0;i&lt;4;i++)</div><div class="line">            &#123;</div><div class="line">                r=row1+dir[i];//这个地方r和row要分开，不然r一直是累加的</div><div class="line">                c=col1+dir[i+1];</div><div class="line">                <span class="keyword">if</span>(r&gt;=0&amp;&amp;r&lt;m&amp;&amp;c&gt;=0&amp;&amp;c&lt;n&amp;&amp;grid[r][c]==1)</div><div class="line">                &#123;</div><div class="line">                    area++;</div><div class="line">                    grid[r][c]=2;</div><div class="line">                    myq.push(&#123;r,c&#125;);</div><div class="line">                &#125;</div><div class="line">            &#125;                       </div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/06/LeetCode695/" data-id="cja0pv4au000d84nlav7hp4f1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/06/LeetCode695/" data-id="cja0q9xl800096onlgawuseqo" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/">dfs</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs-bfs/">dfs bfs</a></li></ul>
 
     </footer>
   </div>
@@ -110,7 +111,7 @@
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          LeetCode167
+          LeetCode-167. Two Sum II - Input array is sorted
         
       </div>
     </a>
@@ -137,7 +138,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二叉搜索/">二叉搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回溯法/">回溯法</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs-bfs/">dfs bfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回溯法/">回溯法</a></li></ul>
     </div>
   </div>
 
@@ -147,7 +148,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/二分法/" style="font-size: 10px;">二分法</a> <a href="/tags/二叉搜索/" style="font-size: 10px;">二叉搜索</a> <a href="/tags/回溯法/" style="font-size: 10px;">回溯法</a>
+      <a href="/tags/dfs-bfs/" style="font-size: 10px;">dfs bfs</a> <a href="/tags/二分法/" style="font-size: 20px;">二分法</a> <a href="/tags/回溯法/" style="font-size: 10px;">回溯法</a>
     </div>
   </div>
 
@@ -169,15 +170,15 @@
       <ul>
         
           <li>
-            <a href="/2017/11/15/LeetCode287/">LeetCode287</a>
+            <a href="/2017/11/15/LeetCode287/">LeetCode-287. Find the Duplicate Number</a>
           </li>
         
           <li>
-            <a href="/2017/11/13/LeetCode230/">LeetCode230</a>
+            <a href="/2017/11/13/LeetCode230/">LeetCode-230. Kth Smallest Element in a BST</a>
           </li>
         
           <li>
-            <a href="/2017/11/13/LeetCode167/">LeetCode167</a>
+            <a href="/2017/11/13/LeetCode167/">LeetCode-167. Two Sum II - Input array is sorted</a>
           </li>
         
           <li>
