@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,51 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-LeetCode441" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/20/LeetCode441/" class="article-date">
+  <time datetime="2017-11-20T02:50:21.000Z" itemprop="datePublished">2017-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/20/LeetCode441/">LeetCode441</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/arranging-coins/description/" target="_blank" rel="external">Description</a></h1><p>You have a total of n coins that you want to form in a staircase shape, where every k-th row must have exactly k coins.</p>
+<p>Given n, find the total number of full staircase rows that can be formed.</p>
+<p>n is a non-negative integer and fits within the range of a 32-bit signed integer.</p>
+<h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">n = 5</div><div class="line"></div><div class="line">The coins can form the following rows:</div><div class="line">¤</div><div class="line">¤ ¤</div><div class="line">¤ ¤</div><div class="line"></div><div class="line">Because the 3rd row is incomplete, we <span class="built_in">return</span> 2.</div></pre></td></tr></table></figure>
+<h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">n = 8</div><div class="line"></div><div class="line">The coins can form the following rows:</div><div class="line">¤</div><div class="line">¤ ¤</div><div class="line">¤ ¤ ¤</div><div class="line">¤ ¤</div><div class="line"></div><div class="line">Because the 4th row is incomplete, we <span class="built_in">return</span> 3.</div></pre></td></tr></table></figure>
+<h2 id="Demo1-用的二分搜索"><a href="#Demo1-用的二分搜索" class="headerlink" title="Demo1(用的二分搜索)"></a>Demo1(用的二分搜索)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int arrangeCoins(int n) &#123;</div><div class="line">        <span class="keyword">if</span> (n &lt;= 1) <span class="built_in">return</span> n;</div><div class="line">        long low = 1, high = n;</div><div class="line">        <span class="keyword">while</span> (low &lt; high) &#123;</div><div class="line">            long mid = low + (high - low) / 2;</div><div class="line">            <span class="keyword">if</span> (mid * (mid + 1) / 2 &lt;= n) low = mid + 1;//把1到mid的和和n相比，缩小mid的范围</div><div class="line">            <span class="keyword">else</span> high = mid;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> low - 1;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>复杂度为O(lgn)的方法，用到了二分搜索法，我们搜索前i行之和刚好大于n的临界点，<br>这样我们减一个就是能排满的行数，注意我们计算前i行之和有可能会整型溢出，所以<br>我们需要将变量都定义成长整型</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/20/LeetCode441/" data-id="cja7lov6s000bzknl1dj3pwgn" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-LeetCode287" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -90,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/15/LeetCode287/" data-id="cja0qdy8o0003nonlrq64zq9t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/15/LeetCode287/" data-id="cja7lov6c0006zknlya4tfl89" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -132,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/LeetCode230/" data-id="cja0qdy8j0001nonlhkoai8zz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/LeetCode230/" data-id="cja7lov510001zknljrq75o6s" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -174,7 +219,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/LeetCode167/" data-id="cja0qdy8d0000nonlfdljfutl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/LeetCode167/" data-id="cja7lov460000zknl7qbrseez" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -218,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/06/LeetCode695/" data-id="cja0qdy900009nonlisrbqi10" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/06/LeetCode695/" data-id="cja7lov6s0009zknlk9mx4utw" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/">dfs</a></li></ul>
@@ -265,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/02/hello-world/" data-id="cja0qdy92000cnonl9j7ntewq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/02/hello-world/" data-id="cja7lov6s000ezknlqpn51rlw" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -319,7 +364,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/02/LeetCode39/" data-id="cja0qdy8q0004nonlar3epa73" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/02/LeetCode39/" data-id="cja7lov6c0007zknltowzsvuq" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/回溯法/">回溯法</a></li></ul>
@@ -362,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/31/LeetCode392/" data-id="cja0qdy8s0005nonlk2h4g7oq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/31/LeetCode392/" data-id="cja7lov6s000czknl9fqvpeqj" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -405,7 +450,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/26/LeetCode413/" data-id="cja0qdy8x0008nonlg23vu1yn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/26/LeetCode413/" data-id="cja7lov77000hzknl47e691sb" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -425,7 +470,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Mot-clés</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回溯法/">回溯法</a></li></ul>
     </div>
@@ -435,7 +480,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
       <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/二分法/" style="font-size: 20px;">二分法</a> <a href="/tags/回溯法/" style="font-size: 10px;">回溯法</a>
     </div>
@@ -454,9 +499,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/11/20/LeetCode441/">LeetCode441</a>
+          </li>
         
           <li>
             <a href="/2017/11/15/LeetCode287/">LeetCode-287. Find the Duplicate Number</a>
@@ -474,10 +523,6 @@
             <a href="/2017/11/06/LeetCode695/">LeetCode-695. Max Area of Island</a>
           </li>
         
-          <li>
-            <a href="/2017/11/02/hello-world/">Hello World</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -491,7 +536,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 wang zaozao<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
