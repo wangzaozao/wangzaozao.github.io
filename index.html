@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,50 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-LeetCode150" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/25/LeetCode150/" class="article-date">
+  <time datetime="2017-11-25T12:09:51.000Z" itemprop="datePublished">2017-11-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/25/LeetCode150/">LeetCode150</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/evaluate-reverse-polish-notation/description/" target="_blank" rel="external">Description</a></h1><p>Evaluate the value of an arithmetic expression in Reverse Polish Notation.</p>
+<p>Valid operators are +, -, *, /. Each operand may be an integer or another expression.</p>
+<h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">"2"</span>, <span class="string">"1"</span>, <span class="string">"+"</span>, <span class="string">"3"</span>, <span class="string">"*"</span>] -&gt; ((2 + 1) * 3) -&gt; 9</div></pre></td></tr></table></figure>
+<h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">"4"</span>, <span class="string">"13"</span>, <span class="string">"5"</span>, <span class="string">"/"</span>, <span class="string">"+"</span>] -&gt; (4 + (13 / 5)) -&gt; 6</div></pre></td></tr></table></figure>
+<h2 id="Demo1-用的栈"><a href="#Demo1-用的栈" class="headerlink" title="Demo1(用的栈)"></a>Demo1(用的栈)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int evalRPN(vector&lt;string&gt;&amp; tokens) &#123;</div><div class="line">        stack&lt;int&gt;s;</div><div class="line">        int l,r;</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;tokens.size();i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(tokens[i]==<span class="string">"+"</span>)</div><div class="line">            &#123;</div><div class="line">                r=s.top();</div><div class="line">                s.pop();</div><div class="line">                l=s.top();</div><div class="line">                s.pop();</div><div class="line">                s.push(l+r);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(tokens[i]==<span class="string">"-"</span>)</div><div class="line">            &#123;</div><div class="line">                r=s.top();</div><div class="line">                s.pop();</div><div class="line">                l=s.top();</div><div class="line">                s.pop();</div><div class="line">                s.push(l-r);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(tokens[i]==<span class="string">"*"</span>)</div><div class="line">            &#123;</div><div class="line">                r=s.top();</div><div class="line">                s.pop();</div><div class="line">                l=s.top();</div><div class="line">                s.pop();</div><div class="line">                s.push(l*r);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(tokens[i]==<span class="string">"/"</span>)</div><div class="line">            &#123;</div><div class="line">                r=s.top();</div><div class="line">                s.pop();</div><div class="line">                l=s.top();</div><div class="line">                s.pop();</div><div class="line">                s.push(l/r);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                s.push(atoi((tokens[i]).c_str()));//由字符串转化成数字</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> s.top();</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>思路：从左到右遍历表达式的每个数字和字符，遇到数字就进栈，遇到符号，就将栈顶的两个数字取出（注意第一次取出的是右操作数，<br>第二次取出的栈顶数字是左操作数），进行运算，将运算结果压栈，一直到最终获得计算结果（最终的栈顶数字）。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/25/LeetCode150/" data-id="cjafarjuo0000qonl1dvdmrt9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/栈/">栈</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-LeetCode441" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -94,7 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/20/LeetCode441/" data-id="cja7lov6s000bzknl1dj3pwgn" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/11/20/LeetCode441/" data-id="cjafarjv80008qonl52pxn5ut" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -135,7 +179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/15/LeetCode287/" data-id="cja7lov6c0006zknlya4tfl89" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/11/15/LeetCode287/" data-id="cjafarjv30004qonlsadko1fu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -177,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/LeetCode230/" data-id="cja7lov510001zknljrq75o6s" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/11/13/LeetCode230/" data-id="cjafarjv10003qonls2t1ywgx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -219,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/LeetCode167/" data-id="cja7lov460000zknl7qbrseez" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/11/13/LeetCode167/" data-id="cjafarjuv0001qonln0807f8b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -263,7 +307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/06/LeetCode695/" data-id="cja7lov6s0009zknlk9mx4utw" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/11/06/LeetCode695/" data-id="cjafarjva0009qonlyg4chv9z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/">dfs</a></li></ul>
@@ -310,7 +354,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/02/hello-world/" data-id="cja7lov6s000ezknlqpn51rlw" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/11/02/hello-world/" data-id="cjafarjvl000gqonl5s0rmped" class="article-share-link">Share</a>
       
       
     </footer>
@@ -364,7 +408,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/02/LeetCode39/" data-id="cja7lov6c0007zknltowzsvuq" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/11/02/LeetCode39/" data-id="cjafarjv50005qonli6xm2f6s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/回溯法/">回溯法</a></li></ul>
@@ -407,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/31/LeetCode392/" data-id="cja7lov6s000czknl9fqvpeqj" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/10/31/LeetCode392/" data-id="cjafarjvf000cqonl3jd1q3tn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -450,7 +494,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/26/LeetCode413/" data-id="cja7lov77000hzknl47e691sb" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/10/26/LeetCode413/" data-id="cjafarjvh000eqonljttp53kc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -470,9 +514,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回溯法/">回溯法</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回溯法/">回溯法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li></ul>
     </div>
   </div>
 
@@ -480,9 +524,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/二分法/" style="font-size: 20px;">二分法</a> <a href="/tags/回溯法/" style="font-size: 10px;">回溯法</a>
+      <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/二分法/" style="font-size: 20px;">二分法</a> <a href="/tags/回溯法/" style="font-size: 10px;">回溯法</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a>
     </div>
   </div>
 
@@ -499,9 +543,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/11/25/LeetCode150/">LeetCode150</a>
+          </li>
         
           <li>
             <a href="/2017/11/20/LeetCode441/">LeetCode441</a>
@@ -519,10 +567,6 @@
             <a href="/2017/11/13/LeetCode167/">LeetCode-167. Two Sum II - Input array is sorted</a>
           </li>
         
-          <li>
-            <a href="/2017/11/06/LeetCode695/">LeetCode-695. Max Area of Island</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -536,7 +580,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 wang zaozao<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
