@@ -61,6 +61,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-LeetCode148" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/26/LeetCode148/" class="article-date">
+  <time datetime="2017-11-26T04:12:24.000Z" itemprop="datePublished">2017-11-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/26/LeetCode148/">LeetCode148</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/sort-list/description/" target="_blank" rel="external">Description</a></h1><p>Sort a linked list in O(n log n) time using constant space complexity.</p>
+<h2 id="Demo1-用的分治法加递归"><a href="#Demo1-用的分治法加递归" class="headerlink" title="Demo1(用的分治法加递归)"></a>Demo1(用的分治法加递归)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;  </div><div class="line">public:  </div><div class="line">    ListNode *sortList(ListNode *head) &#123;  </div><div class="line">        <span class="keyword">if</span> (head == NULL || head-&gt;next == NULL) <span class="built_in">return</span> head;  </div><div class="line">        ListNode* slower = head; //slower是左1/2链表的尾巴  </div><div class="line">        ListNode* slow = head-&gt;next;//slow是右1/2链表的开始  </div><div class="line">        ListNode* fast = head-&gt;next-&gt;next;//fast每次走2步，slow每次走1步，当fast走到原链表结尾的时候，slow就走到了1/2点了。  </div><div class="line">        <span class="keyword">while</span>(fast != NULL) &#123;  </div><div class="line">            slower = slow;  </div><div class="line">            fast = fast-&gt;next;  </div><div class="line">            slow = slow-&gt;next;  </div><div class="line">            <span class="keyword">if</span>(fast != NULL) fast = fast-&gt;next;  </div><div class="line">        &#125;  </div><div class="line">//        slower = slow; //测试后发现，如果把slow或者slower向右移动一位，可能会造成infinite loop，所以还是应该保持slow就在原链表1/2处的位置。  </div><div class="line">//        slow = slow-&gt;next; //如果使用这个错误版本的代码，&#123;4,3,8,7,2,1,9,5,6,0&#125; 这个例子会有infinite loop。</div><div class="line">        slower-&gt;next = NULL;  </div><div class="line">        ListNode* left = sortList(head);  </div><div class="line">        ListNode* right = sortList(slow);  </div><div class="line">        ListNode* dummy_head = new ListNode(-1); //避免讨论head是不是空。  </div><div class="line">        ListNode* tail = dummy_head;  </div><div class="line">        <span class="keyword">while</span>(left!= NULL &amp;&amp; right != NULL) &#123;  </div><div class="line">            <span class="keyword">if</span> (left-&gt;val &lt; right-&gt;val) &#123;  </div><div class="line">                tail-&gt;next = left;  </div><div class="line">                left = left-&gt;next;  </div><div class="line">            &#125; <span class="keyword">else</span> &#123;  </div><div class="line">                tail-&gt;next = right;  </div><div class="line">                right = right-&gt;next;  </div><div class="line">            &#125;  </div><div class="line">            tail = tail-&gt;next;  </div><div class="line">            tail-&gt;next = NULL;  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">while</span> (left != NULL) &#123;  </div><div class="line">            tail-&gt;next = left;  </div><div class="line">            left = left-&gt;next;  </div><div class="line">            tail = tail-&gt;next;  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">while</span> (right != NULL) &#123;  </div><div class="line">            tail-&gt;next = right;  </div><div class="line">            right = right-&gt;next;  </div><div class="line">            tail = tail-&gt;next;  </div><div class="line">        &#125;  </div><div class="line">          </div><div class="line">        ListNode* return_head = dummy_head-&gt;next;  </div><div class="line">        delete dummy_head;  </div><div class="line">        dummy_head = NULL;  </div><div class="line">        <span class="built_in">return</span> return_head;  </div><div class="line">    &#125;  </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>思路：<br>挺有意思的一道题目。表面上看，能够有O(n lgn)时间复杂度的算法为，快速排序，堆排序，归并排序，三者的空间复杂度分别为O(1), O(N),O(N)<br>所以一开始，我想着用快速排序的方法来解决，但是发现代码很难写出来。于是网上看了一下提示，发现其实方法选错了。应该使用的方法是归并排序。<br>通常而言，也就是针对数组而言，归并排序的空间复杂度为O(N), 你需要开出O(N)的额外空间来容纳数组，来表示归并后的顺序。但是，对于链表而言，<br>你可以省下这部分空间的开销，你只需要改变节点的next指针的指向，就可以表示新的归并后的顺序了，所以空间复杂度陡然降到了O(1)。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/26/LeetCode148/" data-id="cjag98rxt00015onlkur9sqsc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-LeetCode150" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/25/LeetCode150/" class="article-date">
@@ -93,7 +134,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/25/LeetCode150/" data-id="cjafarjuo0000qonl1dvdmrt9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/25/LeetCode150/" data-id="cjag98rxm00005onle64mjpa5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/栈/">栈</a></li></ul>
@@ -138,7 +179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/20/LeetCode441/" data-id="cjafarjv80008qonl52pxn5ut" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/20/LeetCode441/" data-id="cjag98ryb000f5onlvs5k2e6e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -179,7 +220,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/15/LeetCode287/" data-id="cjafarjv30004qonlsadko1fu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/15/LeetCode287/" data-id="cjag98ry100055onlu8ov2zeh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -221,7 +262,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/LeetCode230/" data-id="cjafarjv10003qonls2t1ywgx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/LeetCode230/" data-id="cjag98rxz00045onl8n6u8tk0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -263,7 +304,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/LeetCode167/" data-id="cjafarjuv0001qonln0807f8b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/LeetCode167/" data-id="cjag98rxy00035onl6a461yz1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -307,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/06/LeetCode695/" data-id="cjafarjva0009qonlyg4chv9z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/06/LeetCode695/" data-id="cjag98ry8000d5onlehio1hgq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/">dfs</a></li></ul>
@@ -354,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/02/hello-world/" data-id="cjafarjvl000gqonl5s0rmped" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/02/hello-world/" data-id="cjag98ryd000h5onlo81i062n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -408,7 +449,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/02/LeetCode39/" data-id="cjafarjv50005qonli6xm2f6s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/02/LeetCode39/" data-id="cjag98ry300085onlfrrbayfa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/回溯法/">回溯法</a></li></ul>
@@ -451,50 +492,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/31/LeetCode392/" data-id="cjafarjvf000cqonl3jd1q3tn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="leetcode-LeetCode413" class="article article-type-leetcode" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/26/LeetCode413/" class="article-date">
-  <time datetime="2017-10-26T13:28:43.000Z" itemprop="datePublished">2017-10-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/26/LeetCode413/">LeetCode-413. Arithmetic Slices</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/arithmetic-slices/description/" target="_blank" rel="external">Description</a></h1><p>A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.</p>
-<p>For example, these are arithmetic sequence:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1, 3, 5, 7, 9</div><div class="line">7, 7, 7, 7</div><div class="line">3, -1, -5, -9</div></pre></td></tr></table></figure></p>
-<p>The following sequence is not arithmetic.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1, 1, 2, 5, 7</div></pre></td></tr></table></figure></p>
-<p>A zero-indexed array A consisting of N numbers is given. A slice of that array is any pair of integers (P, Q) such that 0 &lt;= P &lt; Q &lt; N.</p>
-<p>A slice (P, Q) of array A is called arithmetic if the sequence:<br>A[P], A[p + 1], …, A[Q - 1], A[Q] is arithmetic. In particular, this means that P + 1 &lt; Q.</p>
-<p>The function should return the number of arithmetic slices in the array A.</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">A = [1, 2, 3, 4]</div><div class="line"></div><div class="line"><span class="built_in">return</span>: 3, <span class="keyword">for</span> 3 arithmetic slices <span class="keyword">in</span> A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] itself.</div></pre></td></tr></table></figure>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</div><div class="line">        int n=A.size();</div><div class="line">        vector&lt;int&gt;dp(n,0);</div><div class="line">        <span class="keyword">if</span>(n&lt;3)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        int result=0;</div><div class="line">        <span class="keyword">for</span>(int i=2;i&lt;n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>((A[i]-A[i-1])==(A[i-1]-A[i-2]))</div><div class="line">                dp[i]=dp[i-1]+1;//以第i个数结尾增加了几个Arithmetic Slices</div><div class="line">            result+=dp[i];</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/26/LeetCode413/" data-id="cjafarjvh000eqonljttp53kc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/31/LeetCode392/" data-id="cjag98ry500095onln6sa0612" class="article-share-link">Share</a>
       
       
     </footer>
@@ -505,6 +503,10 @@
 
   
 
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
 </section>
         
           <aside id="sidebar">
@@ -516,7 +518,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回溯法/">回溯法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分法/">二分法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回溯法/">回溯法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/链表/">链表</a></li></ul>
     </div>
   </div>
 
@@ -526,7 +528,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/二分法/" style="font-size: 20px;">二分法</a> <a href="/tags/回溯法/" style="font-size: 10px;">回溯法</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a>
+      <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/二分法/" style="font-size: 20px;">二分法</a> <a href="/tags/回溯法/" style="font-size: 10px;">回溯法</a> <a href="/tags/栈/" style="font-size: 10px;">栈</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a>
     </div>
   </div>
 
@@ -548,6 +550,10 @@
       <ul>
         
           <li>
+            <a href="/2017/11/26/LeetCode148/">LeetCode148</a>
+          </li>
+        
+          <li>
             <a href="/2017/11/25/LeetCode150/">LeetCode150</a>
           </li>
         
@@ -561,10 +567,6 @@
         
           <li>
             <a href="/2017/11/13/LeetCode230/">LeetCode-230. Kth Smallest Element in a BST</a>
-          </li>
-        
-          <li>
-            <a href="/2017/11/13/LeetCode167/">LeetCode-167. Two Sum II - Input array is sorted</a>
           </li>
         
       </ul>
