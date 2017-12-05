@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>LeetCode-392. Is Subsequence | 就喜欢你看不惯我，又干不掉我的样子~</title>
+  <title>LeetCode147. Insertion Sort List | 就喜欢你看不惯我，又干不掉我的样子~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="DescriptionGiven a string s and a string t, check if s is subsequence of t. You may assume that there is only lower case English letters in both s and t. t is potentially a very long (length ~= 500,00">
+  <meta name="description" content="DescriptionSort a linked list using insertion sort. Demo1(链表的插入排序)123456789101112131415161718192021222324252627282930/** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *">
+<meta name="keywords" content="插入排序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-392. Is Subsequence">
-<meta property="og:url" content="http://yoursite.com/2017/10/31/LeetCode392/index.html">
+<meta property="og:title" content="LeetCode147. Insertion Sort List">
+<meta property="og:url" content="http://yoursite.com/2017/12/05/LeetCode147/index.html">
 <meta property="og:site_name" content="就喜欢你看不惯我，又干不掉我的样子~">
-<meta property="og:description" content="DescriptionGiven a string s and a string t, check if s is subsequence of t. You may assume that there is only lower case English letters in both s and t. t is potentially a very long (length ~= 500,00">
-<meta property="og:updated_time" content="2017-11-02T12:21:09.513Z">
+<meta property="og:description" content="DescriptionSort a linked list using insertion sort. Demo1(链表的插入排序)123456789101112131415161718192021222324252627282930/** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *">
+<meta property="og:updated_time" content="2017-12-05T08:46:15.990Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode-392. Is Subsequence">
-<meta name="twitter:description" content="DescriptionGiven a string s and a string t, check if s is subsequence of t. You may assume that there is only lower case English letters in both s and t. t is potentially a very long (length ~= 500,00">
+<meta name="twitter:title" content="LeetCode147. Insertion Sort List">
+<meta name="twitter:description" content="DescriptionSort a linked list using insertion sort. Demo1(链表的插入排序)123456789101112131415161718192021222324252627282930/** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *">
   
     <link rel="alternate" href="/atom.xml" title="就喜欢你看不惯我，又干不掉我的样子~" type="application/atom+xml">
   
@@ -63,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-LeetCode392" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-LeetCode147" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/10/31/LeetCode392/" class="article-date">
-  <time datetime="2017-10-31T12:46:45.000Z" itemprop="datePublished">2017-10-31</time>
+    <a href="/2017/12/05/LeetCode147/" class="article-date">
+  <time datetime="2017-12-05T08:42:28.000Z" itemprop="datePublished">2017-12-05</time>
 </a>
     
   </div>
@@ -77,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      LeetCode-392. Is Subsequence
+      LeetCode147. Insertion Sort List
     </h1>
   
 
@@ -85,37 +86,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/is-subsequence/description/" target="_blank" rel="external">Description</a></h1><p>Given a string s and a string t, check if s is subsequence of t.</p>
-<p>You may assume that there is only lower case English letters in both s and t. t is potentially a very long (length ~= 500,000) string, and s is a short string (&lt;=100).</p>
-<p>A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, “ace” is a subsequence of “abcde” while “aec” is not).</p>
-<h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">"abc"</span>, t = <span class="string">"ahbgdc"</span></div><div class="line"></div><div class="line">Return <span class="literal">true</span>.</div></pre></td></tr></table></figure>
-<h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">"axc"</span>, t = <span class="string">"ahbgdc"</span></div><div class="line"></div><div class="line">Return <span class="literal">false</span>.</div></pre></td></tr></table></figure>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    bool isSubsequence(string s, string t) &#123;</div><div class="line">        int m,n;</div><div class="line">        m=s.length();</div><div class="line">        n=t.length();</div><div class="line">        int i=0,j=0;</div><div class="line">        <span class="keyword">for</span>(;i&lt;m&amp;&amp;j&lt;n;j++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(s[i]==t[j])</div><div class="line">            &#123;</div><div class="line">                i++;</div><div class="line">            &#125;</div><div class="line">        &#125;         </div><div class="line">        <span class="built_in">return</span> (i==m);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/insertion-sort-list/description/" target="_blank" rel="external">Description</a></h1><p>Sort a linked list using insertion sort.</p>
+<h2 id="Demo1-链表的插入排序"><a href="#Demo1-链表的插入排序" class="headerlink" title="Demo1(链表的插入排序)"></a>Demo1(链表的插入排序)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode *insertionSortList(ListNode *head) &#123;</div><div class="line">        ListNode *sortedHead = new ListNode(-1);</div><div class="line">        <span class="keyword">while</span>(head != NULL)</div><div class="line">        &#123;</div><div class="line">            //保存head位置</div><div class="line">            ListNode *temp = head-&gt;next;</div><div class="line">            ListNode *cur = sortedHead;</div><div class="line">            <span class="keyword">while</span>(cur-&gt;next != NULL &amp;&amp; cur-&gt;next-&gt;val &lt; head-&gt;val)</div><div class="line">            &#123;</div><div class="line">                cur = cur-&gt;next;</div><div class="line">            &#125;</div><div class="line">            //插入</div><div class="line">            head-&gt;next = cur-&gt;next;</div><div class="line">            cur-&gt;next = head;</div><div class="line">            //恢复head</div><div class="line">            head = temp;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> sortedHead-&gt;next;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>思路：<br>本题是插入排序的链表版本。</p>
+<p>传统数组版本做法就是两重循环，第一重是遍历所有元素，第二重是遍历已排序部分进行插入。</p>
+<p>链表版本类似，在遍历每个元素过程中，遍历已排序部分进行插入。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/31/LeetCode392/" data-id="cjatdu8rc000hoonl6wzz93ck" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/12/05/LeetCode147/" data-id="cjatdu8pq0001oonljy85caus" class="article-share-link">Delen</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插入排序/">插入排序</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2017/11/02/LeetCode39/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Nieuwer</strong>
-      <div class="article-nav-title">
-        
-          LeetCode-A series of Combination Sum
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/10/26/LeetCode413/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/11/26/LeetCode148/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Ouder</strong>
-      <div class="article-nav-title">LeetCode-413. Arithmetic Slices</div>
+      <div class="article-nav-title">LeetCode148. Sort List</div>
     </a>
   
 </nav>
