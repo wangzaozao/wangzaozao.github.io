@@ -83,16 +83,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/insertion-sort-list/description/" target="_blank" rel="external">Description</a></h1><p>Given a singly linked list L: L0→L1→…→Ln-1→Ln,<br>reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/reorder-list/description/" target="_blank" rel="external">Description</a></h1><p>Given a singly linked list L: L0→L1→…→Ln-1→Ln,<br>reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p>
 <p>You must do this in-place without altering the nodes’ values.</p>
 <h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Given &#123;1,2,3,4&#125;, reorder it to &#123;1,4,2,3&#125;.</div></pre></td></tr></table></figure>
-<h2 id="Demo1-链表的插入排序"><a href="#Demo1-链表的插入排序" class="headerlink" title="Demo1(链表的插入排序)"></a>Demo1(链表的插入排序)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void reorderList(ListNode* head) &#123;</div><div class="line">        <span class="keyword">if</span>(head==NULL||head-&gt;next==NULL)</div><div class="line">            <span class="built_in">return</span>;</div><div class="line">        //先使用快慢指针将链表从中间分割成两段</div><div class="line">        ListNode*slow=head,*fast=head,*p=head,*q=head;</div><div class="line">        <span class="keyword">while</span>(fast-&gt;next!=NULL&amp;&amp;fast-&gt;next-&gt;next!=NULL)</div><div class="line">        &#123;</div><div class="line">            slow=slow-&gt;next;</div><div class="line">            fast=fast-&gt;next-&gt;next;</div><div class="line">        &#125;</div><div class="line">        fast=slow-&gt;next,slow-&gt;next=NULL;</div><div class="line">        //后半段就地逆置</div><div class="line">        p=fast,q=fast-&gt;next,fast-&gt;next=NULL;</div><div class="line">        <span class="keyword">while</span>(q)</div><div class="line">        &#123;</div><div class="line">            ListNode*tmp=q-&gt;next;</div><div class="line">            q-&gt;next=p;</div><div class="line">            p=q;</div><div class="line">            q=tmp;</div><div class="line">        &#125;</div><div class="line">        //后半段插入到前半段中</div><div class="line">        q=head;</div><div class="line">        <span class="keyword">while</span>(p&amp;&amp;q)</div><div class="line">        &#123;</div><div class="line">            ListNode*tmp1=q-&gt;next,*tmp2=p-&gt;next;</div><div class="line">            p-&gt;next=q-&gt;next;</div><div class="line">            q-&gt;next=p;</div><div class="line">            q=tmp1;</div><div class="line">            p=tmp2;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="Demo1-链表的插入排序"><a href="#Demo1-链表的插入排序" class="headerlink" title="Demo1(链表的插入排序)"></a>Demo1(链表的插入排序)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void reorderList(ListNode* head) &#123;</div><div class="line">        <span class="keyword">if</span>(head==NULL||head-&gt;next==NULL)</div><div class="line">            <span class="built_in">return</span>;</div><div class="line">        //第一步，先使用快慢指针将链表从中间分割成两段</div><div class="line">        ListNode*slow=head,*fast=head,*p=head,*q=head;</div><div class="line">        <span class="keyword">while</span>(fast-&gt;next!=NULL&amp;&amp;fast-&gt;next-&gt;next!=NULL)</div><div class="line">        &#123;</div><div class="line">            slow=slow-&gt;next;</div><div class="line">            fast=fast-&gt;next-&gt;next;</div><div class="line">        &#125;</div><div class="line">        fast=slow-&gt;next,slow-&gt;next=NULL;</div><div class="line">        //第二步，后半段就地逆置</div><div class="line">        p=fast,q=fast-&gt;next,fast-&gt;next=NULL;//注意fast-&gt;next=NULL</div><div class="line">        <span class="keyword">while</span>(q)</div><div class="line">        &#123;</div><div class="line">            ListNode*tmp=q-&gt;next;</div><div class="line">            q-&gt;next=p;</div><div class="line">            p=q;</div><div class="line">            q=tmp;</div><div class="line">        &#125;</div><div class="line">        //第三步，后半段插入到前半段中</div><div class="line">        q=head;</div><div class="line">        <span class="keyword">while</span>(p&amp;&amp;q)</div><div class="line">        &#123;</div><div class="line">            ListNode*tmp1=q-&gt;next,*tmp2=p-&gt;next;</div><div class="line">            p-&gt;next=q-&gt;next;</div><div class="line">            q-&gt;next=p;</div><div class="line">            q=tmp1;</div><div class="line">            p=tmp2;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>思路：<br>先使用快慢指针将链表从中间分割成两段，然后后半段就地逆置．之后合并插入到前半段链表即可，时间复杂度O(n)。<br>这三步已经在代码中标注，每个步骤可灵活运用于别的题目。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/05/LeetCode143/" data-id="cjatij3u60000kwnl78tv6he2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/05/LeetCode143/" data-id="cjatiqjkz00034wnlhxqdtpug" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
@@ -135,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/05/LeetCode147/" data-id="cjatij3ug0003kwnloftnhmm0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/05/LeetCode147/" data-id="cjatiqjko00004wnlzo29aa6m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插入排序/">插入排序</a></li></ul>
@@ -176,7 +176,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/26/LeetCode148/" data-id="cjatij3uc0001kwnl32z2jh4i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/26/LeetCode148/" data-id="cjatiqjku00014wnlnkjxwhil" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
@@ -220,7 +220,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/25/LeetCode150/" data-id="cjatij3ui0004kwnlemg1epub" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/25/LeetCode150/" data-id="cjatiqjl100044wnlckcyeq2x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/栈/">栈</a></li></ul>
@@ -265,7 +265,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/20/LeetCode441/" data-id="cjatij3uv000hkwnl7fasjaga" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/20/LeetCode441/" data-id="cjatiqjle000f4wnlle6bd3ap" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -306,7 +306,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/15/LeetCode287/" data-id="cjatij3up0009kwnltihsf177" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/15/LeetCode287/" data-id="cjatiqjl600094wnl6lv428lr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -348,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/LeetCode230/" data-id="cjatij3un0008kwnl8xcbag1m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/LeetCode230/" data-id="cjatiqjl400084wnlup0zu6bu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -390,7 +390,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/LeetCode167/" data-id="cjatij3uj0005kwnly298fn0o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/LeetCode167/" data-id="cjatiqjl200054wnllfnk2tpp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -434,7 +434,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/06/LeetCode695/" data-id="cjatij3uw000jkwnljjskxt5d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/06/LeetCode695/" data-id="cjatiqjlh000j4wnlpi06bism" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/">dfs</a></li></ul>
@@ -481,7 +481,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/02/hello-world/" data-id="cjatij3uy000lkwnlsrr5y43e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/02/hello-world/" data-id="cjatiqjli000l4wnlxktq0h16" class="article-share-link">Share</a>
       
       
     </footer>
