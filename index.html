@@ -85,14 +85,14 @@
       
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/copy-list-with-random-pointer/description/" target="_blank" rel="external">Description</a></h1><p>A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.</p>
 <p>Return a deep copy of the list.</p>
-<h2 id="Demo1-使用hash-map"><a href="#Demo1-使用hash-map" class="headerlink" title="Demo1(使用hash_map)"></a>Demo1(使用hash_map)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h2 id="Demo1-使用hash-map"><a href="#Demo1-使用hash-map" class="headerlink" title="Demo1(使用hash_map)"></a>Demo1(使用hash_map)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> singly-linked list with a random pointer.</div><div class="line"> * struct RandomListNode &#123;</div><div class="line"> *     int label;</div><div class="line"> *     RandomListNode *next, *random;</div><div class="line"> *     RandomListNode(int x) : label(x), next(NULL), random(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    RandomListNode *copyRandomList(RandomListNode *head) &#123;</div><div class="line">        <span class="keyword">if</span> (!head) <span class="built_in">return</span> NULL;</div><div class="line">        unordered_map&lt;RandomListNode*, RandomListNode*&gt; mp;</div><div class="line">        // 创建一个新的链表头</div><div class="line">        RandomListNode *new_head = new RandomListNode(head-&gt;label);</div><div class="line">        // node1负责指向原链表，node2负责指向新链表</div><div class="line">        RandomListNode *node1 = head, *node2 = new_head;</div><div class="line">        /**</div><div class="line">         * 按照原链表的结构不断创建新的节点，并维护好next指针，将node1与node2的对应关系保存到hash_map中，</div><div class="line">         * 以备后面维护random指针的时候，可以通过node1找到对应的node2。</div><div class="line">         */</div><div class="line">        <span class="keyword">while</span> (node1-&gt;next != NULL) &#123;</div><div class="line">            mp[node1] = node2;</div><div class="line">            node1 = node1-&gt;next;</div><div class="line">            node2-&gt;next = new RandomListNode(node1-&gt;label);</div><div class="line">            node2 = node2-&gt;next;</div><div class="line">        &#125;</div><div class="line">        // 将两个链表的尾巴的对应关系也保存好</div><div class="line">        mp[node1] = node2;</div><div class="line">        </div><div class="line">        // 继续从头开始处理random指针</div><div class="line">        node1 = head;</div><div class="line">        node2 = new_head;</div><div class="line">        <span class="keyword">while</span> (node1!= NULL) &#123;</div><div class="line">            node2-&gt;random = mp[node1-&gt;random];</div><div class="line">            node1 = node1-&gt;next;</div><div class="line">            node2 = node2-&gt;next;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> new_head;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h2 id="Demo2-不使用hash-map"><a href="#Demo2-不使用hash-map" class="headerlink" title="Demo2(不使用hash_map)"></a>Demo2(不使用hash_map)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> singly-linked list with a random pointer.</div><div class="line"> * struct RandomListNode &#123;</div><div class="line"> *     int label;</div><div class="line"> *     RandomListNode *next, *random;</div><div class="line"> *     RandomListNode(int x) : label(x), next(NULL), random(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    RandomListNode *copyRandomList(RandomListNode *head) &#123;</div><div class="line">        /**</div><div class="line">         * 假设：l1代表原链表中的节点；l2代表新链表中的节点</div><div class="line">         */</div><div class="line">        RandomListNode *new_head, *l1, *l2;</div><div class="line">        <span class="keyword">if</span> (head == NULL) <span class="built_in">return</span> NULL;</div><div class="line">        </div><div class="line">        /**</div><div class="line">         * 第一步：在每一个l1后面创建一个l2，并让l1指向l2，l2指向下一个l1；</div><div class="line">         */</div><div class="line">        <span class="keyword">for</span> (l1 = head; l1 != NULL; l1 = l1-&gt;next-&gt;next) &#123;</div><div class="line">            l2 = new RandomListNode(l1-&gt;label);</div><div class="line">            l2-&gt;next = l1-&gt;next;</div><div class="line">            l1-&gt;next = l2;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        /**</div><div class="line">         * 第二步：给l2的random赋值，l1的random的next指向的就是l2的random的目标；</div><div class="line">         */</div><div class="line">        new_head = head-&gt;next;</div><div class="line">        <span class="keyword">for</span> (l1 = head; l1 != NULL; l1 = l1-&gt;next-&gt;next) &#123;</div><div class="line">            <span class="keyword">if</span> (l1-&gt;random != NULL) l1-&gt;next-&gt;random = l1-&gt;random-&gt;next;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        /**</div><div class="line">         * 第三步：需要将整个链表拆成两个链表，具体做法是让l1的next指向后面的后面；</div><div class="line">         *         l2的next也指向后面的后面。</div><div class="line">         */</div><div class="line">        <span class="keyword">for</span> (l1 = head; l1 != NULL; l1 = l1-&gt;next) &#123;</div><div class="line">            l2 = l1-&gt;next;</div><div class="line">            l1-&gt;next = l2-&gt;next;</div><div class="line">            <span class="keyword">if</span> (l2-&gt;next != NULL) l2-&gt;next = l2-&gt;next-&gt;next;//需要判断l2-&gt;next！=NULL,因为如果是NULL的话,NULL没有next,会报错</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> new_head;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>//思路：<br>在代码中已标明</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/17/LeetCode138/" data-id="cjba8dzjo0000tsnl3an6f1pl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/17/LeetCode138/" data-id="cjbai56fr0000c4nlqfevgto7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
@@ -139,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/09/LeetCode139/" data-id="cjba8dzk30001tsnltsf4evck" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/09/LeetCode139/" data-id="cjbai56fz0001c4nlra7x1lps" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
@@ -186,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/08/LeetCode141/" data-id="cjba8dzkj0003tsnl5fx24xve" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/08/LeetCode141/" data-id="cjbai56gb0003c4nlszlvpfzd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
@@ -229,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/05/LeetCode143/" data-id="cjba8dzkj0004tsnlho6glml7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/05/LeetCode143/" data-id="cjbai56gf0004c4nlw6xgw6fq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
@@ -272,7 +272,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/05/LeetCode147/" data-id="cjba8dzkj0005tsnl17sm7ky9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/05/LeetCode147/" data-id="cjbai56gj0005c4nlqyiztsyl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插入排序/">插入排序</a></li></ul>
@@ -313,7 +313,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/26/LeetCode148/" data-id="cjba8dzky000atsnlo4nmtv32" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/26/LeetCode148/" data-id="cjbai56gr000ac4nlsb3kck4r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
@@ -357,7 +357,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/25/LeetCode150/" data-id="cjba8dzky000ctsnl33637u3e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/25/LeetCode150/" data-id="cjbai56gz000ec4nl2p4fc28u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/栈/">栈</a></li></ul>
@@ -402,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/20/LeetCode441/" data-id="cjba8dzmp000ztsnldv4dz9zy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/20/LeetCode441/" data-id="cjbai56i7000zc4nlhphec93k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -443,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/15/LeetCode287/" data-id="cjba8dzlu000stsnltulrnuqq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/15/LeetCode287/" data-id="cjbai56gv000cc4nlm0b2lse6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -485,7 +485,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/LeetCode230/" data-id="cjba8dzlu000otsnl81vbluud" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/LeetCode230/" data-id="cjbai56h3000jc4nl8ki0miqy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
