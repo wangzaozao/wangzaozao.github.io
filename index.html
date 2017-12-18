@@ -93,17 +93,14 @@
 <h2 id="Demo2-dfs"><a href="#Demo2-dfs" class="headerlink" title="Demo2(dfs)"></a>Demo2(dfs)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> undirected graph.</div><div class="line"> * struct UndirectedGraphNode &#123;</div><div class="line"> *     int label;</div><div class="line"> *     vector&lt;UndirectedGraphNode *&gt; neighbors;</div><div class="line"> *     UndirectedGraphNode(int x) : label(x) &#123;&#125;;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    unordered_map&lt;UndirectedGraphNode*,UndirectedGraphNode*&gt;<span class="built_in">hash</span>;</div><div class="line">    UndirectedGraphNode *cloneGraph(UndirectedGraphNode *node) &#123;</div><div class="line">        <span class="keyword">if</span>(node==NULL)</div><div class="line">            <span class="built_in">return</span> node;</div><div class="line">        <span class="keyword">if</span>(hash.count(node))</div><div class="line">            <span class="built_in">return</span> <span class="built_in">hash</span>[node];</div><div class="line">        <span class="built_in">hash</span>[node]=new UndirectedGraphNode(node-&gt;label);</div><div class="line">        <span class="keyword">for</span>(auto neigh:node-&gt;neighbors)</div><div class="line">            <span class="built_in">hash</span>[node]-&gt;neighbors.push_back(cloneGraph(neigh));</div><div class="line">        <span class="built_in">return</span> <span class="built_in">hash</span>[node];</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>//思路：<br>克隆图的一个难点就是一个结点的邻居可能在已经出现过，这样你只要把他的指针加到邻居集合中即可，也有可能这个结点还没出现过，因此你需要新建一个这个结点，因此我们需要一个hash表来对结点做一一映射．<br>本题有两种方法来做，广度搜索BFS和深度搜索DFS.</p>
 <ol>
-<li>广度搜索BFS</li>
+<li>广度搜索BFS<br>利用队列，每次遍历队列头结点所有的邻居，如果其某个邻居还没有被创建，那就创建一个，并且将其加入到队列中去．否则说明这个结点已经被创建，而我们只在一个结点刚被创建时才将其加入到队列中去，因此这个结点已经被创建我们就没必要将其入队列了．每次遍历完之后就克隆好了一个结点和其邻居．然后直到队列为空，我们就完成了克隆的操作．</li>
 </ol>
-<p>利用队列，每次遍历队列头结点所有的邻居，如果其某个邻居还没有被创建，那就创建一个，并且将其加入到队列中去．否则说明这个结点已经被创建，而我们只在一个结点刚被创建时才将其加入到队列中去，因此这个结点已经被创建我们就没必要将其入队列了．每次遍历完之后就克隆好了一个结点和其邻居．然后直到队列为空，我们就完成了克隆的操作．</p>
-<p>２．深度搜索DFS</p>
-<p>DFS利用递归一般可以写出比BFS更优雅整洁的代码．</p>
-<p>每次搜索的时候看这个结点是不是已经被创建，是的话就返回其copy，否则就创建，然后再依次深度遍历其邻居结点并将其加入邻居集合中去．</p>
+<p>２．深度搜索DFS<br>DFS利用递归一般可以写出比BFS更优雅整洁的代码．<br>每次搜索的时候看这个结点是不是已经被创建，是的话就返回其copy，否则就创建，然后再依次深度遍历其邻居结点并将其加入邻居集合中去．</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/18/LeetCode133/" data-id="cjbc4xul70000u4nlgu3eoi8w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/18/LeetCode133/" data-id="cjbc53sj400018wnlrdlww69u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图/">图</a></li></ul>
@@ -154,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/18/LeetCode134/" data-id="cjbc4xuln0004u4nlwobojjiz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/18/LeetCode134/" data-id="cjbc53sip00008wnl7ki7ijay" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/贪心法/">贪心法</a></li></ul>
@@ -196,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/17/LeetCode137/" data-id="cjbc4xuln0003u4nlactxqwod" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/17/LeetCode137/" data-id="cjbc53sj400038wnlp9o644b5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/复杂度/">复杂度</a></li></ul>
@@ -239,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/17/LeetCode138/" data-id="cjbc4xuln0001u4nly9y0yps4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/17/LeetCode138/" data-id="cjbc53sj400048wnl99bop6po" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
@@ -286,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/09/LeetCode139/" data-id="cjbc4xum20005u4nl6b40y8dz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/09/LeetCode139/" data-id="cjbc53sj400058wnl9kbg6tpm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
@@ -333,7 +330,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/08/LeetCode141/" data-id="cjbc4xum20008u4nlgkhrbtb8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/08/LeetCode141/" data-id="cjbc53sjk00088wnlg5x8qdtm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
@@ -376,7 +373,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/05/LeetCode143/" data-id="cjbc4xum20009u4nl9yon0opm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/05/LeetCode143/" data-id="cjbc53sjk00098wnllpicwvq2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
@@ -419,7 +416,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/05/LeetCode147/" data-id="cjbc4xum2000cu4nlno5exhnu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/05/LeetCode147/" data-id="cjbc53sjk000b8wnljir2fmib" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插入排序/">插入排序</a></li></ul>
@@ -460,7 +457,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/26/LeetCode148/" data-id="cjbc4xum2000eu4nlv4ceh5of" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/26/LeetCode148/" data-id="cjbc53sjk000d8wnlfcspu9xw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
@@ -504,7 +501,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/25/LeetCode150/" data-id="cjbc4xumi000ju4nlnzl5637w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/25/LeetCode150/" data-id="cjbc53sjk000f8wnlvsodh5ty" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/栈/">栈</a></li></ul>
