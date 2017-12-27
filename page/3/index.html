@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Mot-clé: 链表 | 就喜欢你看不惯我，又干不掉我的样子~</title>
+  <title>就喜欢你看不惯我，又干不掉我的样子~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="就喜欢你看不惯我，又干不掉我的样子~">
-<meta property="og:url" content="http://yoursite.com/tags/链表/index.html">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="就喜欢你看不惯我，又干不掉我的样子~">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="就喜欢你看不惯我，又干不掉我的样子~">
@@ -61,95 +61,54 @@
       <div class="outer">
         <section id="main">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/12/17/LeetCode138/" class="archive-article-date">
-  <time datetime="2017-12-17T03:41:08.000Z" itemprop="datePublished">Dec 17</time>
+    <article id="leetcode-LeetCode413" class="article article-type-leetcode" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/26/LeetCode413/" class="article-date">
+  <time datetime="2017-10-26T13:28:43.000Z" itemprop="datePublished">2017-10-26</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/17/LeetCode138/">LeetCode138. Copy List with Random Pointer</a>
+      <a class="article-title" href="/2017/10/26/LeetCode413/">LeetCode-413. Arithmetic Slices</a>
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/12/08/LeetCode141/" class="archive-article-date">
-  <time datetime="2017-12-08T01:15:06.000Z" itemprop="datePublished">Dec 8</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/08/LeetCode141/">LeetCode141. Linked List Cycle 142. Linked List Cycle II</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/12/05/LeetCode143/" class="archive-article-date">
-  <time datetime="2017-12-05T10:55:17.000Z" itemprop="datePublished">Dec 5</time>
-</a>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/arithmetic-slices/description/" target="_blank" rel="external">Description</a></h1><p>A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.</p>
+<p>For example, these are arithmetic sequence:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1, 3, 5, 7, 9</div><div class="line">7, 7, 7, 7</div><div class="line">3, -1, -5, -9</div></pre></td></tr></table></figure></p>
+<p>The following sequence is not arithmetic.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1, 1, 2, 5, 7</div></pre></td></tr></table></figure></p>
+<p>A zero-indexed array A consisting of N numbers is given. A slice of that array is any pair of integers (P, Q) such that 0 &lt;= P &lt; Q &lt; N.</p>
+<p>A slice (P, Q) of array A is called arithmetic if the sequence:<br>A[P], A[p + 1], …, A[Q - 1], A[Q] is arithmetic. In particular, this means that P + 1 &lt; Q.</p>
+<p>The function should return the number of arithmetic slices in the array A.</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">A = [1, 2, 3, 4]</div><div class="line"></div><div class="line"><span class="built_in">return</span>: 3, <span class="keyword">for</span> 3 arithmetic slices <span class="keyword">in</span> A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] itself.</div></pre></td></tr></table></figure>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</div><div class="line">        int n=A.size();</div><div class="line">        vector&lt;int&gt;dp(n,0);</div><div class="line">        <span class="keyword">if</span>(n&lt;3)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        int result=0;</div><div class="line">        <span class="keyword">for</span>(int i=2;i&lt;n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>((A[i]-A[i-1])==(A[i-1]-A[i-2]))</div><div class="line">                dp[i]=dp[i-1]+1;//以第i个数结尾增加了几个Arithmetic Slices</div><div class="line">            result+=dp[i];</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/05/LeetCode143/">LeetCode143. Reorder List</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/11/26/LeetCode148/" class="archive-article-date">
-  <time datetime="2017-11-26T04:12:24.000Z" itemprop="datePublished">Nov 26</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/10/26/LeetCode413/" data-id="cjbp65l0a000vggnl391l8kgw" class="article-share-link">Partager</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/26/LeetCode148/">LeetCode148. Sort List</a>
-    </h1>
-  
-
-    </header>
+      
+    </footer>
   </div>
+  
 </article>
-  
-  
-    </div></section>
+
+
   
 
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
 </section>
         
           <aside id="sidebar">

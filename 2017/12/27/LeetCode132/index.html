@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>LeetCode-413. Arithmetic Slices | 就喜欢你看不惯我，又干不掉我的样子~</title>
+  <title>LeetCode132. Palindrome Partitioning II | 就喜欢你看不惯我，又干不掉我的样子~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="DescriptionA sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same. For example, these are arithmetic">
+  <meta name="description" content="DescriptionGiven a string s, partition s such that every substring of the partition is a palindrome. Return the minimum cuts needed for a palindrome partitioning of s. Example12given s = &quot;aab&quot;,Return">
+<meta name="keywords" content="动态规划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-413. Arithmetic Slices">
-<meta property="og:url" content="http://yoursite.com/2017/10/26/LeetCode413/index.html">
+<meta property="og:title" content="LeetCode132. Palindrome Partitioning II">
+<meta property="og:url" content="http://yoursite.com/2017/12/27/LeetCode132/index.html">
 <meta property="og:site_name" content="就喜欢你看不惯我，又干不掉我的样子~">
-<meta property="og:description" content="DescriptionA sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same. For example, these are arithmetic">
-<meta property="og:updated_time" content="2017-10-26T13:57:37.198Z">
+<meta property="og:description" content="DescriptionGiven a string s, partition s such that every substring of the partition is a palindrome. Return the minimum cuts needed for a palindrome partitioning of s. Example12given s = &quot;aab&quot;,Return">
+<meta property="og:updated_time" content="2017-12-27T14:41:05.870Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode-413. Arithmetic Slices">
-<meta name="twitter:description" content="DescriptionA sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same. For example, these are arithmetic">
+<meta name="twitter:title" content="LeetCode132. Palindrome Partitioning II">
+<meta name="twitter:description" content="DescriptionGiven a string s, partition s such that every substring of the partition is a palindrome. Return the minimum cuts needed for a palindrome partitioning of s. Example12given s = &quot;aab&quot;,Return">
   
     <link rel="alternate" href="/atom.xml" title="就喜欢你看不惯我，又干不掉我的样子~" type="application/atom+xml">
   
@@ -63,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="leetcode-LeetCode413" class="article article-type-leetcode" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-LeetCode132" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/10/26/LeetCode413/" class="article-date">
-  <time datetime="2017-10-26T13:28:43.000Z" itemprop="datePublished">2017-10-26</time>
+    <a href="/2017/12/27/LeetCode132/" class="article-date">
+  <time datetime="2017-12-27T14:29:47.000Z" itemprop="datePublished">2017-12-27</time>
 </a>
     
   </div>
@@ -77,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      LeetCode-413. Arithmetic Slices
+      LeetCode132. Palindrome Partitioning II
     </h1>
   
 
@@ -85,35 +86,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/arithmetic-slices/description/" target="_blank" rel="external">Description</a></h1><p>A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.</p>
-<p>For example, these are arithmetic sequence:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1, 3, 5, 7, 9</div><div class="line">7, 7, 7, 7</div><div class="line">3, -1, -5, -9</div></pre></td></tr></table></figure></p>
-<p>The following sequence is not arithmetic.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1, 1, 2, 5, 7</div></pre></td></tr></table></figure></p>
-<p>A zero-indexed array A consisting of N numbers is given. A slice of that array is any pair of integers (P, Q) such that 0 &lt;= P &lt; Q &lt; N.</p>
-<p>A slice (P, Q) of array A is called arithmetic if the sequence:<br>A[P], A[p + 1], …, A[Q - 1], A[Q] is arithmetic. In particular, this means that P + 1 &lt; Q.</p>
-<p>The function should return the number of arithmetic slices in the array A.</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">A = [1, 2, 3, 4]</div><div class="line"></div><div class="line"><span class="built_in">return</span>: 3, <span class="keyword">for</span> 3 arithmetic slices <span class="keyword">in</span> A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] itself.</div></pre></td></tr></table></figure>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</div><div class="line">        int n=A.size();</div><div class="line">        vector&lt;int&gt;dp(n,0);</div><div class="line">        <span class="keyword">if</span>(n&lt;3)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        int result=0;</div><div class="line">        <span class="keyword">for</span>(int i=2;i&lt;n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>((A[i]-A[i-1])==(A[i-1]-A[i-2]))</div><div class="line">                dp[i]=dp[i-1]+1;//以第i个数结尾增加了几个Arithmetic Slices</div><div class="line">            result+=dp[i];</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/palindrome-partitioning-ii/description/" target="_blank" rel="external">Description</a></h1><p>Given a string s, partition s such that every substring of the partition is a palindrome.</p>
+<p>Return the minimum cuts needed for a palindrome partitioning of s.</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">given s = <span class="string">"aab"</span>,</div><div class="line">Return 1 since the palindrome partitioning [<span class="string">"aa"</span>,<span class="string">"b"</span>] could be produced using 1 cut.</div></pre></td></tr></table></figure>
+<h2 id="Demo-动态规划"><a href="#Demo-动态规划" class="headerlink" title="Demo(动态规划)"></a>Demo(动态规划)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int minCut(string s) &#123;</div><div class="line">        int n=s.size();</div><div class="line">        vector&lt;vector&lt;int&gt;&gt;dp(n, vector&lt;int&gt;(n, 0));</div><div class="line">        vector&lt;int&gt;cut(n+1,INT_MAX);</div><div class="line">        cut[n]=0;</div><div class="line">        <span class="keyword">for</span>(int i=n-1;i&gt;=0;i--)</div><div class="line">        &#123;</div><div class="line">            //cut[i]=INT_MAX;</div><div class="line">            <span class="keyword">for</span>(int j=i;j&lt;n;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(s[i]==s[j]&amp;&amp;(j-i&lt;=1||dp[i+1][j-1]==1))//一激动就把大小号写反，-_-||</div><div class="line">                &#123;</div><div class="line">                    dp[i][j]=1;</div><div class="line">                    cut[i]=min(cut[j+1]+1,cut[i]);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> cut[0]-1;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>//思路：<br>对于一个字符串，我们需要考虑所有可能的分割，这个问题可以抽象成一个DP问题，对于一个长度为n的字符串，设DP[i][j]表示第i个字符到第j个字符是否构成回文，若是，则DP[i][j]=1;若否，则DP[i][j]=0;如此，根据回文的约束条件（对称性），DP[i][j]构成回文需满足：<br>1、输入字符串s[i]==s[j],对称性；<br>2、条件1满足并不能保证i到j构成回文，还须：（j-i）&lt;=1或者DP[i+1][j-1]=1；即，i、j相邻或者i=j，也就是相邻字符相等构成回文或者字符自身构成回文，如果i、j不相邻或者相等，i到j构成回文的前提就是DP[i+1][j-1]=1.<br>cut[i]表示第i个字符到最后一个字符所构成的子串的最小分割次数，这里的i有约束条件，就是第i个位置必须是可进行回文分割的，即DP[i][j]==1 (j&gt;=i&amp;&amp;j&lt;s.length())</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/26/LeetCode413/" data-id="cjbp65l0a000vggnl391l8kgw" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/12/27/LeetCode132/" data-id="cjbp65kx20001ggnlbplp1z9i" class="article-share-link">Partager</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2017/10/31/LeetCode392/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
-      <div class="article-nav-title">
-        
-          LeetCode-392. Is Subsequence
-        
-      </div>
-    </a>
   
+    <a href="/2017/12/27/LeetCode131/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">LeetCode131. Palindrome Partitioning</div>
+    </a>
   
 </nav>
 
