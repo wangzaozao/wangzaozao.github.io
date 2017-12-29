@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>LeetCode137. Single Number II | 就喜欢你看不惯我，又干不掉我的样子~</title>
+  <title>LeetCode129. Sum Root to Leaf Numbers | 就喜欢你看不惯我，又干不掉我的样子~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="DescriptionGiven an array of integers, every element appears three times except for one, which appears exactly once. Find that single one. Note:Your algorithm should have a linear runtime complexity.">
-<meta name="keywords" content="复杂度">
+  <meta name="description" content="DescriptionGiven a binary tree containing digits from 0-9 only, each root-to-leaf path could represent a number. An example is the root-to-leaf path 1-&amp;gt;2-&amp;gt;3 which represents the number 123. Find">
+<meta name="keywords" content="树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode137. Single Number II">
-<meta property="og:url" content="http://yoursite.com/2017/12/17/LeetCode137/index.html">
+<meta property="og:title" content="LeetCode129. Sum Root to Leaf Numbers">
+<meta property="og:url" content="http://yoursite.com/2017/12/29/LeetCode129/index.html">
 <meta property="og:site_name" content="就喜欢你看不惯我，又干不掉我的样子~">
-<meta property="og:description" content="DescriptionGiven an array of integers, every element appears three times except for one, which appears exactly once. Find that single one. Note:Your algorithm should have a linear runtime complexity.">
-<meta property="og:updated_time" content="2017-12-17T09:08:53.854Z">
+<meta property="og:description" content="DescriptionGiven a binary tree containing digits from 0-9 only, each root-to-leaf path could represent a number. An example is the root-to-leaf path 1-&amp;gt;2-&amp;gt;3 which represents the number 123. Find">
+<meta property="og:updated_time" content="2017-12-29T01:38:57.332Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode137. Single Number II">
-<meta name="twitter:description" content="DescriptionGiven an array of integers, every element appears three times except for one, which appears exactly once. Find that single one. Note:Your algorithm should have a linear runtime complexity.">
+<meta name="twitter:title" content="LeetCode129. Sum Root to Leaf Numbers">
+<meta name="twitter:description" content="DescriptionGiven a binary tree containing digits from 0-9 only, each root-to-leaf path could represent a number. An example is the root-to-leaf path 1-&amp;gt;2-&amp;gt;3 which represents the number 123. Find">
   
     <link rel="alternate" href="/atom.xml" title="就喜欢你看不惯我，又干不掉我的样子~" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-LeetCode137" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-LeetCode129" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/12/17/LeetCode137/" class="article-date">
-  <time datetime="2017-12-17T09:00:24.000Z" itemprop="datePublished">2017-12-17</time>
+    <a href="/2017/12/29/LeetCode129/" class="article-date">
+  <time datetime="2017-12-29T01:30:59.000Z" itemprop="datePublished">2017-12-29</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      LeetCode137. Single Number II
+      LeetCode129. Sum Root to Leaf Numbers
     </h1>
   
 
@@ -86,18 +86,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/single-number-ii/description/" target="_blank" rel="external">Description</a></h1><p>Given an array of integers, every element appears three times except for one, which appears exactly once. Find that single one.</p>
-<p>Note:<br>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
-<h2 id="Demo-按位与或"><a href="#Demo-按位与或" class="headerlink" title="Demo(按位与或)"></a>Demo(按位与或)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int singleNumber(vector&lt;int&gt;&amp; nums) &#123;</div><div class="line">        int length=nums.size();</div><div class="line">        int result=0;</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;32;i++)</div><div class="line">        &#123;</div><div class="line">            int count=0;</div><div class="line">            int mask=1&lt;&lt;i;//设置某一位为一，方便后面的按位与或操作</div><div class="line">            <span class="keyword">for</span>(int j=0;j&lt;length;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(nums[j]&amp;mask)</div><div class="line">                    count++;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(count%3)</div><div class="line">                result|=mask;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>//思路：<br>考虑每个元素的为一个32位的二进制数，这样每一位上出现要么为1，要么为0。对数组，统计每一位上1 出现的次数count，必定是3N或者3N+1 次。让count对3取模，能够获得到那个只出现1次的元素该位是0还是1。</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/sum-root-to-leaf-numbers/description/" target="_blank" rel="external">Description</a></h1><p>Given a binary tree containing digits from 0-9 only, each root-to-leaf path could represent a number.</p>
+<p>An example is the root-to-leaf path 1-&gt;2-&gt;3 which represents the number 123.</p>
+<p>Find the total sum of all root-to-leaf numbers.</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    1</div><div class="line">   / \</div><div class="line">  2   3</div><div class="line">The root-to-leaf path 1-&gt;2 represents the number 12.</div><div class="line">The root-to-leaf path 1-&gt;3 represents the number 13.</div><div class="line"></div><div class="line">Return the sum = 12 + 13 = 25.</div></pre></td></tr></table></figure>
+<h2 id="Demo-递归"><a href="#Demo-递归" class="headerlink" title="Demo(递归)"></a>Demo(递归)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> a binary tree node.</div><div class="line"> * struct TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int sumNumbers(TreeNode* root) &#123;</div><div class="line">        <span class="built_in">return</span> dfs(root,0);</div><div class="line">    &#125;</div><div class="line">    int dfs(TreeNode*root,int sum)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(root==NULL)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        sum=sum*10+root-&gt;val;</div><div class="line">        <span class="keyword">if</span>(root-&gt;left==NULL&amp;&amp;root-&gt;right==NULL)</div><div class="line">            <span class="built_in">return</span> sum;</div><div class="line">        <span class="built_in">return</span> dfs(root-&gt;left,sum)+dfs(root-&gt;right,sum);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>//思路：<br>用递归是比较自然的想法，节点可能出现的情况:<br>(1)左孩子或者右孩子两个都为NULL(叶节点)，此时递归返回。<br>(2)左孩子或者右孩子某一个为NULL，此时继续推进下一层调用，只是在下一层中，会发现有一个为NULL节点，走到NULL节点当然应该返回了。<br>(3)左孩子或者右孩子都不为NULL，此时继续推进下一层的调用。<br>虽然(2)和(3)都是继续推进下一层的调用，但是由于(2)会遇到NULL节点，对于这个特殊情况，需要写句话处理一下。<br>ps:递归要想清楚这些问题。(1)要用到什么参数 (2)节点都有哪些情况? (3)递归什么时候返回？</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/17/LeetCode137/" data-id="cjbr92kt300057wnl41e5g5u5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/29/LeetCode129/" data-id="cjbr92ksk00007wnlwq4cjxox" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/复杂度/">复杂度</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树/">树</a></li></ul>
 
     </footer>
   </div>
@@ -105,19 +107,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/12/18/LeetCode134/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          LeetCode134. Gas Station
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/12/17/LeetCode138/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/12/27/LeetCode132/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">LeetCode138. Copy List with Random Pointer</div>
+      <div class="article-nav-title">LeetCode132. Palindrome Partitioning II</div>
     </a>
   
 </nav>
