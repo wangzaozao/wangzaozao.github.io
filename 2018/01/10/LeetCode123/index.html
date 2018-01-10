@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>LeetCode-413. Arithmetic Slices | 就喜欢你看不惯我，又干不掉我的样子~</title>
+  <title>LeetCode123. Best Time to Buy and Sell Stock III | 就喜欢你看不惯我，又干不掉我的样子~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="DescriptionA sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same. For example, these are arithmetic">
+  <meta name="description" content="DescriptionSay you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete at most two transactions. Note:You m">
+<meta name="keywords" content="动态规划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode-413. Arithmetic Slices">
-<meta property="og:url" content="http://yoursite.com/2017/10/26/LeetCode413/index.html">
+<meta property="og:title" content="LeetCode123. Best Time to Buy and Sell Stock III">
+<meta property="og:url" content="http://yoursite.com/2018/01/10/LeetCode123/index.html">
 <meta property="og:site_name" content="就喜欢你看不惯我，又干不掉我的样子~">
-<meta property="og:description" content="DescriptionA sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same. For example, these are arithmetic">
-<meta property="og:updated_time" content="2017-10-26T13:57:37.198Z">
+<meta property="og:description" content="DescriptionSay you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete at most two transactions. Note:You m">
+<meta property="og:updated_time" content="2018-01-10T13:14:14.881Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode-413. Arithmetic Slices">
-<meta name="twitter:description" content="DescriptionA sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same. For example, these are arithmetic">
+<meta name="twitter:title" content="LeetCode123. Best Time to Buy and Sell Stock III">
+<meta name="twitter:description" content="DescriptionSay you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. You may complete at most two transactions. Note:You m">
   
     <link rel="alternate" href="/atom.xml" title="就喜欢你看不惯我，又干不掉我的样子~" type="application/atom+xml">
   
@@ -63,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="leetcode-LeetCode413" class="article article-type-leetcode" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-LeetCode123" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/10/26/LeetCode413/" class="article-date">
-  <time datetime="2017-10-26T13:28:43.000Z" itemprop="datePublished">2017-10-26</time>
+    <a href="/2018/01/10/LeetCode123/" class="article-date">
+  <time datetime="2018-01-10T12:55:23.000Z" itemprop="datePublished">2018-01-10</time>
 </a>
     
   </div>
@@ -77,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      LeetCode-413. Arithmetic Slices
+      LeetCode123. Best Time to Buy and Sell Stock III
     </h1>
   
 
@@ -85,35 +86,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/arithmetic-slices/description/" target="_blank" rel="external">Description</a></h1><p>A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.</p>
-<p>For example, these are arithmetic sequence:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1, 3, 5, 7, 9</div><div class="line">7, 7, 7, 7</div><div class="line">3, -1, -5, -9</div></pre></td></tr></table></figure></p>
-<p>The following sequence is not arithmetic.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1, 1, 2, 5, 7</div></pre></td></tr></table></figure></p>
-<p>A zero-indexed array A consisting of N numbers is given. A slice of that array is any pair of integers (P, Q) such that 0 &lt;= P &lt; Q &lt; N.</p>
-<p>A slice (P, Q) of array A is called arithmetic if the sequence:<br>A[P], A[p + 1], …, A[Q - 1], A[Q] is arithmetic. In particular, this means that P + 1 &lt; Q.</p>
-<p>The function should return the number of arithmetic slices in the array A.</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">A = [1, 2, 3, 4]</div><div class="line"></div><div class="line"><span class="built_in">return</span>: 3, <span class="keyword">for</span> 3 arithmetic slices <span class="keyword">in</span> A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] itself.</div></pre></td></tr></table></figure>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</div><div class="line">        int n=A.size();</div><div class="line">        vector&lt;int&gt;dp(n,0);</div><div class="line">        <span class="keyword">if</span>(n&lt;3)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        int result=0;</div><div class="line">        <span class="keyword">for</span>(int i=2;i&lt;n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>((A[i]-A[i-1])==(A[i-1]-A[i-2]))</div><div class="line">                dp[i]=dp[i-1]+1;//以第i个数结尾增加了几个Arithmetic Slices</div><div class="line">            result+=dp[i];</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/" target="_blank" rel="external">Description</a></h1><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+<p>Design an algorithm to find the maximum profit. You may complete at most two transactions.</p>
+<p>Note:<br>You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
+<h2 id="Demo-局部最优和全局最优"><a href="#Demo-局部最优和全局最优" class="headerlink" title="Demo(局部最优和全局最优)"></a>Demo(局部最优和全局最优)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</div><div class="line">        int n=prices.size();</div><div class="line">        <span class="keyword">if</span>(n==0)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        vector&lt;vector&lt;int&gt;&gt; <span class="built_in">local</span>(n, vector&lt;int&gt;(3, 0));</div><div class="line">        vector&lt;vector&lt;int&gt;&gt; global(n, vector&lt;int&gt;(3, 0));</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;n;i++)//第一天局部收益和全局收益都为0,所以从第二天算起</div><div class="line">        &#123;</div><div class="line">            int diff=prices[i]-prices[i-1];</div><div class="line">            <span class="keyword">for</span>(int j=1;j&lt;=2;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="built_in">local</span>[i][j]=max(global[i-1][j-1]+max(0,diff),<span class="built_in">local</span>[i-1][j]+diff);//max中最后一个参数是+diff，因为<span class="built_in">local</span>是今天卖出最后一笔股票</div><div class="line">                global[i][j]=max(global[i-1][j],<span class="built_in">local</span>[i][j]);</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> global[n-1][2];</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>//思路：<br>这里我们需要两个递推公式来分别更新两个变量local和global，我们其实可以求至少k次交易的最大利润，找到通解后可以设定 k = 2，即为本题的解答。我们定义local[i][j]为在到达第i天时最多可进行j次交易并且最后一次交易在最后一天卖出的最大利润，此为局部最优。然后我们定义global[i][j]为在到达第i天时最多可进行j次交易的最大利润，此为全局最优。它们的递推式为：</p>
+<p>local[i][j] = max(global[i - 1][j - 1] + max(diff, 0), local[i - 1][j] + diff)</p>
+<p>global[i][j] = max(local[i][j], global[i - 1][j])</p>
+<p>其中局部最优值是比较前一天并少交易一次的全局最优加上大于0的差值，和前一天的局部最优加上差值中取较大值，而全局最优比较局部最优和前一天的全局最优。<br>ps:这道题其实挺难的，同时用到了局部最优和全局最优</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/26/LeetCode413/" data-id="cjc937ey5000xt0nl2vzw5gpt" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2018/01/10/LeetCode123/" data-id="cjc937exa0000t0nlbgokhy73" class="article-share-link">Partager</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2017/10/31/LeetCode392/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
-      <div class="article-nav-title">
-        
-          LeetCode-392. Is Subsequence
-        
-      </div>
-    </a>
   
+    <a href="/2017/12/31/LeetCode125/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">LeetCode125. Valid Palindrome</div>
+    </a>
   
 </nav>
 
