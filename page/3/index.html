@@ -69,50 +69,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-LeetCode695" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/06/LeetCode695/" class="article-date">
-  <time datetime="2017-11-06T13:26:26.000Z" itemprop="datePublished">2017-11-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/06/LeetCode695/">LeetCode-695. Max Area of Island</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/max-area-of-island/description/" target="_blank" rel="external">Description</a></h1><p>Given a non-empty 2D array grid of 0’s and 1’s, an island is a group of 1’s (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.</p>
-<p>Find the maximum area of an island in the given 2D array. (If there is no island, the maximum area is 0.)</p>
-<h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[[0,0,1,0,0,0,0,1,0,0,0,0,0],</div><div class="line"> [0,0,0,0,0,0,0,1,1,1,0,0,0],</div><div class="line"> [0,1,1,0,1,0,0,0,0,0,0,0,0],</div><div class="line"> [0,1,0,0,1,1,0,0,1,0,1,0,0],</div><div class="line"> [0,1,0,0,1,1,0,0,1,1,1,0,0],</div><div class="line"> [0,0,0,0,0,0,0,0,0,0,1,0,0],</div><div class="line"> [0,0,0,0,0,0,0,1,1,1,0,0,0],</div><div class="line"> [0,0,0,0,0,0,0,1,1,0,0,0,0]]</div><div class="line">Given the above grid, <span class="built_in">return</span> 6. Note the answer is not 11, because the island must be connected 4-directionally.</div></pre></td></tr></table></figure>
-<h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[[0,0,0,0,0,0,0,0]]</div><div class="line">Given the above grid, <span class="built_in">return</span> 0.</div><div class="line">Note: The length of each dimension <span class="keyword">in</span> the given grid does not exceed 50.</div></pre></td></tr></table></figure>
-<h2 id="Demo1-用的dfs"><a href="#Demo1-用的dfs" class="headerlink" title="Demo1(用的dfs)"></a>Demo1(用的dfs)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int maxAreaOfIsland(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</div><div class="line">        int m,n,area=0;</div><div class="line">        m=grid.size();n=grid[0].size();</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;m;i++)</div><div class="line">            <span class="keyword">for</span>(int j=0;j&lt;n;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(grid[i][j]==1)</div><div class="line">                    area=max(area,dfs(grid,i,j));</div><div class="line">            &#125;</div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line">    int dfs(vector&lt;vector&lt;int&gt;&gt;&amp;grid,int row,int col)</div><div class="line">    &#123;</div><div class="line">        int m,n,area=1;</div><div class="line">        int r,c;</div><div class="line">        grid[row][col]=2;</div><div class="line">        vector&lt;int&gt;dir(&#123;-1,0,1,0,-1&#125;);</div><div class="line">        m=grid.size();</div><div class="line">        n=grid[0].size();  </div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;4;i++)</div><div class="line">        &#123;</div><div class="line">            r=row+dir[i];//这个地方r和row要分开，不然r一直是累加的</div><div class="line">            c=col+dir[i+1];</div><div class="line">            <span class="keyword">if</span>(r&gt;=0&amp;&amp;r&lt;m&amp;&amp;c&gt;=0&amp;&amp;c&lt;n&amp;&amp;grid[r][c]==1)</div><div class="line">                area+=dfs(grid,r,c);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h2 id="Demo2-用的bfs"><a href="#Demo2-用的bfs" class="headerlink" title="Demo2(用的bfs)"></a>Demo2(用的bfs)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int maxAreaOfIsland(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</div><div class="line">        int m,n,area=0;</div><div class="line">        m=grid.size();n=grid[0].size();</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;m;i++)</div><div class="line">            <span class="keyword">for</span>(int j=0;j&lt;n;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(grid[i][j]==1)</div><div class="line">                    area=max(area,bfs(grid,i,j));</div><div class="line">            &#125;</div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int bfs(vector&lt;vector&lt;int&gt;&gt;&amp;grid,int row,int col)</div><div class="line">    &#123;</div><div class="line">        int m,n,area=1;</div><div class="line">        int row1,col1;</div><div class="line">        int r,c;</div><div class="line">        queue&lt;pair&lt;int,int&gt;&gt;myq;</div><div class="line">        myq.push(&#123;row,col&#125;);</div><div class="line">        grid[row][col]=2;</div><div class="line">        vector&lt;int&gt;dir(&#123;-1,0,1,0,-1&#125;);</div><div class="line">        m=grid.size();</div><div class="line">        n=grid[0].size();  </div><div class="line">        <span class="keyword">while</span>(!myq.empty())</div><div class="line">        &#123;</div><div class="line">            row1=myq.front().first;//不是first()</div><div class="line">            col1=myq.front().second;</div><div class="line">            myq.pop();</div><div class="line">            <span class="keyword">for</span>(int i=0;i&lt;4;i++)</div><div class="line">            &#123;</div><div class="line">                r=row1+dir[i];//这个地方r和row要分开，不然r一直是累加的</div><div class="line">                c=col1+dir[i+1];</div><div class="line">                <span class="keyword">if</span>(r&gt;=0&amp;&amp;r&lt;m&amp;&amp;c&gt;=0&amp;&amp;c&lt;n&amp;&amp;grid[r][c]==1)</div><div class="line">                &#123;</div><div class="line">                    area++;</div><div class="line">                    grid[r][c]=2;</div><div class="line">                    myq.push(&#123;r,c&#125;);</div><div class="line">                &#125;</div><div class="line">            &#125;                       </div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/06/LeetCode695/" data-id="cjcd5k5me0017e4nl5bcdhdpc" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/">dfs</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/02/hello-world/" class="article-date">
@@ -148,7 +104,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/02/hello-world/" data-id="cjcd5k5me0019e4nl410bwp2v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/02/hello-world/" data-id="cjcd5yxos001978nl2dgdafrx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -202,7 +158,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/02/LeetCode39/" data-id="cjcd5k5lz000ye4nljkiz3sgk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/02/LeetCode39/" data-id="cjcd5yxok000y78nl6mswxdr0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/回溯法/">回溯法</a></li></ul>
@@ -245,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/31/LeetCode392/" data-id="cjcd5k5lz0010e4nld2t00t4f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/31/LeetCode392/" data-id="cjcd5yxok001078nlcq8jt8hd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -288,7 +244,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/26/LeetCode413/" data-id="cjcd5k5me0015e4nlepkblsnc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/10/26/LeetCode413/" data-id="cjcd5yxoo001378nl8vqntem3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -346,10 +302,6 @@
       <ul>
         
           <li>
-            <a href="/2018/01/13/llll/">llll</a>
-          </li>
-        
-          <li>
             <a href="/2018/01/10/LeetCode123/">LeetCode123. Best Time to Buy and Sell Stock III</a>
           </li>
         
@@ -363,6 +315,10 @@
         
           <li>
             <a href="/2017/12/27/LeetCode132/">LeetCode132. Palindrome Partitioning II</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/27/LeetCode131/">LeetCode131. Palindrome Partitioning</a>
           </li>
         
       </ul>

@@ -69,53 +69,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-LeetCode139" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/09/LeetCode139/" class="article-date">
-  <time datetime="2017-12-09T08:49:01.000Z" itemprop="datePublished">2017-12-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/09/LeetCode139/">LeetCode139. Word Break 140. Word Break II</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/word-break/description/" target="_blank" rel="external">Description</a></h1><p>Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words. You may assume the dictionary does not contain duplicate words.</p>
-<p>UPDATE (2017/1/4):<br>The wordDict parameter had been changed to a list of strings (instead of a set of strings). Please reload the code definition to get the latest changes.</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">given</div><div class="line">s = <span class="string">"leetcode"</span>,</div><div class="line">dict = [<span class="string">"leet"</span>, <span class="string">"code"</span>].</div><div class="line"></div><div class="line">Return <span class="literal">true</span> because <span class="string">"leetcode"</span> can be segmented as <span class="string">"leet code"</span>.</div></pre></td></tr></table></figure>
-<h2 id="Demo-动态规划"><a href="#Demo-动态规划" class="headerlink" title="Demo(动态规划)"></a>Demo(动态规划)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    bool wordBreak(string s, vector&lt;string&gt;&amp; wordDict) &#123;</div><div class="line">        int len=s.size();</div><div class="line">        vector&lt;bool&gt;dp(len+1,<span class="literal">false</span>);</div><div class="line">        dp[0]=<span class="literal">true</span>;</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;=len;i++)</div><div class="line">        <span class="keyword">for</span>(int j=0;j&lt;i;j++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(dp[j]&amp;&amp;find(wordDict.begin(),wordDict.end(),s.substr(j,i-j))!=wordDict.end())//注意vector&lt;string&gt;的find方法 </div><div class="line">                dp[i]=<span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> dp[len];</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h1 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/word-break-ii/description/" target="_blank" rel="external">Description</a></h1><p>Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, add spaces in s to construct a sentence where each word is a valid dictionary word. You may assume the dictionary does not contain duplicate words.</p>
-<p>Return all such possible sentences.<br>UPDATE (2017/1/4):<br>The wordDict parameter had been changed to a list of strings (instead of a set of strings). Please reload the code definition to get the latest changes.</p>
-<h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">given</div><div class="line">s = <span class="string">"catsanddog"</span>,</div><div class="line">dict = [<span class="string">"cat"</span>, <span class="string">"cats"</span>, <span class="string">"and"</span>, <span class="string">"sand"</span>, <span class="string">"dog"</span>].</div><div class="line"></div><div class="line">A solution is [<span class="string">"cats and dog"</span>, <span class="string">"cat sand dog"</span>].</div><div class="line">Return <span class="literal">true</span> because <span class="string">"leetcode"</span> can be segmented as <span class="string">"leet code"</span>.</div></pre></td></tr></table></figure>
-<h2 id="Demo-dp-dfs"><a href="#Demo-dp-dfs" class="headerlink" title="Demo(dp+dfs)"></a>Demo(dp+dfs)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void buildPaths(vector&lt;bool&gt;&amp;isBreakable,string s,unordered_set&lt;string&gt;&amp;wordSet,int pos,string cur,vector&lt;string&gt;&amp;res,int maxlen,int minlen)</div><div class="line">    &#123;</div><div class="line">        int i,len=s.size();</div><div class="line">        <span class="keyword">for</span>(i=minlen;i&lt;=min(maxlen,len-pos);i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(isBreakable[i+pos]&amp;&amp;wordSet.count(s.substr(pos,i)))</div><div class="line">                <span class="keyword">if</span>(pos+i==len)</div><div class="line">                    res.push_back(cur+s.substr(pos,i));</div><div class="line">                <span class="keyword">else</span></div><div class="line">                    buildPaths(isBreakable,s,wordSet,pos+i,cur+s.substr(pos,i)+<span class="string">" "</span>,res,maxlen,minlen);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    vector&lt;string&gt; wordBreak(string s, vector&lt;string&gt;&amp; wordDict) &#123;</div><div class="line">        unordered_set&lt;string&gt; wordSet(wordDict.begin(), wordDict.end());     </div><div class="line">        int size=s.size(),maxlen=INT_MIN,minlen=INT_MAX;</div><div class="line">        int i,len;</div><div class="line">        vector&lt;bool&gt;isBreakable((size+1),<span class="literal">false</span>);</div><div class="line">        vector&lt;string&gt;res;</div><div class="line">        <span class="keyword">for</span>(string word:wordSet)</div><div class="line">        &#123;</div><div class="line">            maxlen=max(maxlen,(int)word.length());</div><div class="line">            minlen=min(minlen,(int)word.length());</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(i=size-minlen,isBreakable[size]=<span class="literal">true</span>;i&gt;=0;i--)</div><div class="line">            <span class="keyword">for</span>(len=minlen;len&lt;=min(maxlen,size-i);len++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(isBreakable[i+len]&amp;&amp;wordSet.count(s.substr(i,len)))</div><div class="line">                &#123;</div><div class="line">                    isBreakable[i]=<span class="literal">true</span>;</div><div class="line">                    <span class="built_in">break</span>;</div><div class="line">                &#125; </div><div class="line">            &#125;</div><div class="line">        <span class="keyword">if</span>(isBreakable[0])</div><div class="line">            buildPaths(isBreakable,s,wordSet,0,<span class="string">""</span>,res,maxlen,minlen);</div><div class="line">        <span class="built_in">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>//思路：<br>The basic idea is to use DP to create an array isBreakable[i] to indicate whether s[i..sSize-1] is breakable.<br>Then we can use such information to help us speed up the DFS path build process (buildPath). Learned from other posts,<br>I first calculated minlen and maxlen to speed up the process.（有点难这个题，摘自LeetCode）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/09/LeetCode139/" data-id="cjcd5k5lj000ge4nlxgw26z7q" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-LeetCode141" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/12/08/LeetCode141/" class="article-date">
@@ -151,7 +104,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/08/LeetCode141/" data-id="cjcd5k5lj000ie4nloa4sfn5q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/08/LeetCode141/" data-id="cjcd5yxo4000i78nlgixifx0l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
@@ -194,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/05/LeetCode143/" data-id="cjcd5k5lj000le4nlgpyvqr4u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/05/LeetCode143/" data-id="cjcd5yxo4000l78nlderyonrj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
@@ -237,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/05/LeetCode147/" data-id="cjcd5k5lj000ne4nleueaj71n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/12/05/LeetCode147/" data-id="cjcd5yxo8000n78nlhm5rbq63" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插入排序/">插入排序</a></li></ul>
@@ -278,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/26/LeetCode148/" data-id="cjcd5k5lz000oe4nl4i5g4ybr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/26/LeetCode148/" data-id="cjcd5yxo8000o78nlte8hbbpp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
@@ -322,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/25/LeetCode150/" data-id="cjcd5k5lz000re4nlnl0xi6nh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/25/LeetCode150/" data-id="cjcd5yxoc000r78nlxk8qperh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/栈/">栈</a></li></ul>
@@ -367,7 +320,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/20/LeetCode441/" data-id="cjcd5k5lz0013e4nln5wrt0oa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/20/LeetCode441/" data-id="cjcd5yxos001578nlpjq66se1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -408,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/15/LeetCode287/" data-id="cjcd5k5lz000ue4nljn5az9w4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/15/LeetCode287/" data-id="cjcd5yxog000w78nlm0nvlsim" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -450,7 +403,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/LeetCode230/" data-id="cjcd5k5lz000we4nl19x45wc5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/LeetCode230/" data-id="cjcd5yxog000u78nl6vj041ht" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
@@ -492,10 +445,54 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/13/LeetCode167/" data-id="cjcd5k5lz000se4nlikg88ytk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/11/13/LeetCode167/" data-id="cjcd5yxoc000s78nlv588chqg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分法/">二分法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-LeetCode695" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/06/LeetCode695/" class="article-date">
+  <time datetime="2017-11-06T13:26:26.000Z" itemprop="datePublished">2017-11-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/06/LeetCode695/">LeetCode-695. Max Area of Island</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/max-area-of-island/description/" target="_blank" rel="external">Description</a></h1><p>Given a non-empty 2D array grid of 0’s and 1’s, an island is a group of 1’s (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.</p>
+<p>Find the maximum area of an island in the given 2D array. (If there is no island, the maximum area is 0.)</p>
+<h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[[0,0,1,0,0,0,0,1,0,0,0,0,0],</div><div class="line"> [0,0,0,0,0,0,0,1,1,1,0,0,0],</div><div class="line"> [0,1,1,0,1,0,0,0,0,0,0,0,0],</div><div class="line"> [0,1,0,0,1,1,0,0,1,0,1,0,0],</div><div class="line"> [0,1,0,0,1,1,0,0,1,1,1,0,0],</div><div class="line"> [0,0,0,0,0,0,0,0,0,0,1,0,0],</div><div class="line"> [0,0,0,0,0,0,0,1,1,1,0,0,0],</div><div class="line"> [0,0,0,0,0,0,0,1,1,0,0,0,0]]</div><div class="line">Given the above grid, <span class="built_in">return</span> 6. Note the answer is not 11, because the island must be connected 4-directionally.</div></pre></td></tr></table></figure>
+<h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[[0,0,0,0,0,0,0,0]]</div><div class="line">Given the above grid, <span class="built_in">return</span> 0.</div><div class="line">Note: The length of each dimension <span class="keyword">in</span> the given grid does not exceed 50.</div></pre></td></tr></table></figure>
+<h2 id="Demo1-用的dfs"><a href="#Demo1-用的dfs" class="headerlink" title="Demo1(用的dfs)"></a>Demo1(用的dfs)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int maxAreaOfIsland(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</div><div class="line">        int m,n,area=0;</div><div class="line">        m=grid.size();n=grid[0].size();</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;m;i++)</div><div class="line">            <span class="keyword">for</span>(int j=0;j&lt;n;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(grid[i][j]==1)</div><div class="line">                    area=max(area,dfs(grid,i,j));</div><div class="line">            &#125;</div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line">    int dfs(vector&lt;vector&lt;int&gt;&gt;&amp;grid,int row,int col)</div><div class="line">    &#123;</div><div class="line">        int m,n,area=1;</div><div class="line">        int r,c;</div><div class="line">        grid[row][col]=2;</div><div class="line">        vector&lt;int&gt;dir(&#123;-1,0,1,0,-1&#125;);</div><div class="line">        m=grid.size();</div><div class="line">        n=grid[0].size();  </div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;4;i++)</div><div class="line">        &#123;</div><div class="line">            r=row+dir[i];//这个地方r和row要分开，不然r一直是累加的</div><div class="line">            c=col+dir[i+1];</div><div class="line">            <span class="keyword">if</span>(r&gt;=0&amp;&amp;r&lt;m&amp;&amp;c&gt;=0&amp;&amp;c&lt;n&amp;&amp;grid[r][c]==1)</div><div class="line">                area+=dfs(grid,r,c);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="Demo2-用的bfs"><a href="#Demo2-用的bfs" class="headerlink" title="Demo2(用的bfs)"></a>Demo2(用的bfs)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int maxAreaOfIsland(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</div><div class="line">        int m,n,area=0;</div><div class="line">        m=grid.size();n=grid[0].size();</div><div class="line">        <span class="keyword">for</span>(int i=0;i&lt;m;i++)</div><div class="line">            <span class="keyword">for</span>(int j=0;j&lt;n;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(grid[i][j]==1)</div><div class="line">                    area=max(area,bfs(grid,i,j));</div><div class="line">            &#125;</div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    int bfs(vector&lt;vector&lt;int&gt;&gt;&amp;grid,int row,int col)</div><div class="line">    &#123;</div><div class="line">        int m,n,area=1;</div><div class="line">        int row1,col1;</div><div class="line">        int r,c;</div><div class="line">        queue&lt;pair&lt;int,int&gt;&gt;myq;</div><div class="line">        myq.push(&#123;row,col&#125;);</div><div class="line">        grid[row][col]=2;</div><div class="line">        vector&lt;int&gt;dir(&#123;-1,0,1,0,-1&#125;);</div><div class="line">        m=grid.size();</div><div class="line">        n=grid[0].size();  </div><div class="line">        <span class="keyword">while</span>(!myq.empty())</div><div class="line">        &#123;</div><div class="line">            row1=myq.front().first;//不是first()</div><div class="line">            col1=myq.front().second;</div><div class="line">            myq.pop();</div><div class="line">            <span class="keyword">for</span>(int i=0;i&lt;4;i++)</div><div class="line">            &#123;</div><div class="line">                r=row1+dir[i];//这个地方r和row要分开，不然r一直是累加的</div><div class="line">                c=col1+dir[i+1];</div><div class="line">                <span class="keyword">if</span>(r&gt;=0&amp;&amp;r&lt;m&amp;&amp;c&gt;=0&amp;&amp;c&lt;n&amp;&amp;grid[r][c]==1)</div><div class="line">                &#123;</div><div class="line">                    area++;</div><div class="line">                    grid[r][c]=2;</div><div class="line">                    myq.push(&#123;r,c&#125;);</div><div class="line">                &#125;</div><div class="line">            &#125;                       </div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="built_in">return</span> area;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/06/LeetCode695/" data-id="cjcd5yxos001778nltu6l47pq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/">dfs</a></li></ul>
 
     </footer>
   </div>
@@ -552,10 +549,6 @@
       <ul>
         
           <li>
-            <a href="/2018/01/13/llll/">llll</a>
-          </li>
-        
-          <li>
             <a href="/2018/01/10/LeetCode123/">LeetCode123. Best Time to Buy and Sell Stock III</a>
           </li>
         
@@ -569,6 +562,10 @@
         
           <li>
             <a href="/2017/12/27/LeetCode132/">LeetCode132. Palindrome Partitioning II</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/27/LeetCode131/">LeetCode131. Palindrome Partitioning</a>
           </li>
         
       </ul>
