@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="链表," />
 
 
 
@@ -79,16 +79,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="DescriptionSort a linked list in O(n log n) time using constant space complexity. Demo1(用的分治法加递归)123456789101112131415161718192021222324252627282930313233343536373839404142434445464748class Solution &amp;">
+<meta name="keywords" content="链表">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/11/02/hello-world/index.html">
+<meta property="og:title" content="LeetCode148. Sort List">
+<meta property="og:url" content="http://yoursite.com/2017/11/26/LeetCode148/index.html">
 <meta property="og:site_name" content="就喜欢你看不惯我，又干不掉我的样子~">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="og:updated_time" content="2017-10-23T01:38:56.852Z">
+<meta property="og:description" content="DescriptionSort a linked list in O(n log n) time using constant space complexity. Demo1(用的分治法加递归)123456789101112131415161718192021222324252627282930313233343536373839404142434445464748class Solution &amp;">
+<meta property="og:updated_time" content="2017-12-05T08:48:18.147Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="LeetCode148. Sort List">
+<meta name="twitter:description" content="DescriptionSort a linked list in O(n log n) time using constant space complexity. Demo1(用的分治法加递归)123456789101112131415161718192021222324252627282930313233343536373839404142434445464748class Solution &amp;">
 
 
 
@@ -118,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/02/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/26/LeetCode148/"/>
 
 
 
 
 
-  <title>Hello World | 就喜欢你看不惯我，又干不掉我的样子~</title>
+  <title>LeetCode148. Sort List | 就喜欢你看不惯我，又干不掉我的样子~</title>
   
 
 
@@ -231,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/02/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/26/LeetCode148/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wang zaozao">
@@ -248,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode148. Sort List</h1>
         
 
         <div class="post-meta">
@@ -260,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-02T21:48:39+08:00">
-                2017-11-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-26T12:12:24+08:00">
+                2017-11-26
               </time>
             
 
@@ -298,15 +299,9 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/sort-list/description/" target="_blank" rel="external">Description</a></h1><p>Sort a linked list in O(n log n) time using constant space complexity.</p>
+<h2 id="Demo1-用的分治法加递归"><a href="#Demo1-用的分治法加递归" class="headerlink" title="Demo1(用的分治法加递归)"></a>Demo1(用的分治法加递归)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;  </div><div class="line">public:  </div><div class="line">    ListNode *sortList(ListNode *head) &#123;  </div><div class="line">        <span class="keyword">if</span> (head == NULL || head-&gt;next == NULL) <span class="built_in">return</span> head;  </div><div class="line">        ListNode* slower = head; //slower是左1/2链表的尾巴  </div><div class="line">        ListNode* slow = head-&gt;next;//slow是右1/2链表的开始  </div><div class="line">        ListNode* fast = head-&gt;next-&gt;next;//fast每次走2步，slow每次走1步，当fast走到原链表结尾的时候，slow就走到了1/2点了。  </div><div class="line">        <span class="keyword">while</span>(fast != NULL) &#123;  </div><div class="line">            slower = slow;  </div><div class="line">            fast = fast-&gt;next;  </div><div class="line">            slow = slow-&gt;next;  </div><div class="line">            <span class="keyword">if</span>(fast != NULL) fast = fast-&gt;next;  </div><div class="line">        &#125;  </div><div class="line">//        slower = slow; //测试后发现，如果把slow或者slower向右移动一位，可能会造成infinite loop，所以还是应该保持slow就在原链表1/2处的位置。  </div><div class="line">//        slow = slow-&gt;next; //如果使用这个错误版本的代码，&#123;4,3,8,7,2,1,9,5,6,0&#125; 这个例子会有infinite loop。</div><div class="line">        slower-&gt;next = NULL;  </div><div class="line">        ListNode* left = sortList(head);  </div><div class="line">        ListNode* right = sortList(slow);  </div><div class="line">        ListNode* dummy_head = new ListNode(-1); //避免讨论head是不是空。  </div><div class="line">        ListNode* tail = dummy_head;  </div><div class="line">        <span class="keyword">while</span>(left!= NULL &amp;&amp; right != NULL) &#123;  </div><div class="line">            <span class="keyword">if</span> (left-&gt;val &lt; right-&gt;val) &#123;  </div><div class="line">                tail-&gt;next = left;  </div><div class="line">                left = left-&gt;next;  </div><div class="line">            &#125; <span class="keyword">else</span> &#123;  </div><div class="line">                tail-&gt;next = right;  </div><div class="line">                right = right-&gt;next;  </div><div class="line">            &#125;  </div><div class="line">            tail = tail-&gt;next;  </div><div class="line">            tail-&gt;next = NULL;  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">while</span> (left != NULL) &#123;  </div><div class="line">            tail-&gt;next = left;  </div><div class="line">            left = left-&gt;next;  </div><div class="line">            tail = tail-&gt;next;  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">while</span> (right != NULL) &#123;  </div><div class="line">            tail-&gt;next = right;  </div><div class="line">            right = right-&gt;next;  </div><div class="line">            tail = tail-&gt;next;  </div><div class="line">        &#125;  </div><div class="line">          </div><div class="line">        ListNode* return_head = dummy_head-&gt;next;  </div><div class="line">        delete dummy_head;  </div><div class="line">        dummy_head = NULL;  </div><div class="line">        <span class="built_in">return</span> return_head;  </div><div class="line">    &#125;  </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>思路：<br>挺有意思的一道题目。表面上看，能够有O(n lgn)时间复杂度的算法为，快速排序，堆排序，归并排序，三者的空间复杂度分别为O(1), O(N),O(N)<br>所以一开始，我想着用快速排序的方法来解决，但是发现代码很难写出来。于是网上看了一下提示，发现其实方法选错了。应该使用的方法是归并排序。<br>通常而言，也就是针对数组而言，归并排序的空间复杂度为O(N), 你需要开出O(N)的额外空间来容纳数组，来表示归并后的顺序。但是，对于链表而言，<br>你可以省下这部分空间的开销，你只需要改变节点的next指针的指向，就可以表示新的归并后的顺序了，所以空间复杂度陡然降到了O(1)。</p>
 
       
     </div>
@@ -322,6 +317,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/链表/" rel="tag"># 链表</a>
+          
+        </div>
+      
 
       
       
@@ -331,8 +332,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/02/LeetCode39/" rel="next" title="LeetCode-A series of Combination Sum">
-                <i class="fa fa-chevron-left"></i> LeetCode-A series of Combination Sum
+              <a href="/2017/11/25/LeetCode150/" rel="next" title="LeetCode150. Evaluate Reverse Polish Notation">
+                <i class="fa fa-chevron-left"></i> LeetCode150. Evaluate Reverse Polish Notation
               </a>
             
           </div>
@@ -341,8 +342,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/06/LeetCode695/" rel="prev" title="LeetCode-695. Max Area of Island">
-                LeetCode-695. Max Area of Island <i class="fa fa-chevron-right"></i>
+              <a href="/2017/12/05/LeetCode147/" rel="prev" title="LeetCode147. Insertion Sort List">
+                LeetCode147. Insertion Sort List <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -466,7 +467,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo1-用的分治法加递归"><span class="nav-number">1.1.</span> <span class="nav-text">Demo1(用的分治法加递归)</span></a></li></ol></li></ol></div>
             
 
           </div>

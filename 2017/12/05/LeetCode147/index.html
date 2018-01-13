@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="插入排序," />
 
 
 
@@ -79,16 +79,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="DescriptionSort a linked list using insertion sort. Demo1(链表的插入排序)123456789101112131415161718192021222324252627282930/** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *">
+<meta name="keywords" content="插入排序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/11/02/hello-world/index.html">
+<meta property="og:title" content="LeetCode147. Insertion Sort List">
+<meta property="og:url" content="http://yoursite.com/2017/12/05/LeetCode147/index.html">
 <meta property="og:site_name" content="就喜欢你看不惯我，又干不掉我的样子~">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="og:updated_time" content="2017-10-23T01:38:56.852Z">
+<meta property="og:description" content="DescriptionSort a linked list using insertion sort. Demo1(链表的插入排序)123456789101112131415161718192021222324252627282930/** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *">
+<meta property="og:updated_time" content="2017-12-05T08:46:15.990Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="LeetCode147. Insertion Sort List">
+<meta name="twitter:description" content="DescriptionSort a linked list using insertion sort. Demo1(链表的插入排序)123456789101112131415161718192021222324252627282930/** * Definition for singly-linked list. * struct ListNode &amp;#123; *     int val; *">
 
 
 
@@ -118,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/02/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/05/LeetCode147/"/>
 
 
 
 
 
-  <title>Hello World | 就喜欢你看不惯我，又干不掉我的样子~</title>
+  <title>LeetCode147. Insertion Sort List | 就喜欢你看不惯我，又干不掉我的样子~</title>
   
 
 
@@ -231,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/02/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/05/LeetCode147/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wang zaozao">
@@ -248,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">LeetCode147. Insertion Sort List</h1>
         
 
         <div class="post-meta">
@@ -260,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-02T21:48:39+08:00">
-                2017-11-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-05T16:42:28+08:00">
+                2017-12-05
               </time>
             
 
@@ -298,15 +299,11 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/insertion-sort-list/description/" target="_blank" rel="external">Description</a></h1><p>Sort a linked list using insertion sort.</p>
+<h2 id="Demo1-链表的插入排序"><a href="#Demo1-链表的插入排序" class="headerlink" title="Demo1(链表的插入排序)"></a>Demo1(链表的插入排序)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    ListNode *insertionSortList(ListNode *head) &#123;</div><div class="line">        ListNode *sortedHead = new ListNode(-1);</div><div class="line">        <span class="keyword">while</span>(head != NULL)</div><div class="line">        &#123;</div><div class="line">            //保存head位置</div><div class="line">            ListNode *temp = head-&gt;next;</div><div class="line">            ListNode *cur = sortedHead;</div><div class="line">            <span class="keyword">while</span>(cur-&gt;next != NULL &amp;&amp; cur-&gt;next-&gt;val &lt; head-&gt;val)</div><div class="line">            &#123;</div><div class="line">                cur = cur-&gt;next;</div><div class="line">            &#125;</div><div class="line">            //插入</div><div class="line">            head-&gt;next = cur-&gt;next;</div><div class="line">            cur-&gt;next = head;</div><div class="line">            //恢复head</div><div class="line">            head = temp;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> sortedHead-&gt;next;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>思路：<br>本题是插入排序的链表版本。</p>
+<p>传统数组版本做法就是两重循环，第一重是遍历所有元素，第二重是遍历已排序部分进行插入。</p>
+<p>链表版本类似，在遍历每个元素过程中，遍历已排序部分进行插入。</p>
 
       
     </div>
@@ -322,6 +319,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/插入排序/" rel="tag"># 插入排序</a>
+          
+        </div>
+      
 
       
       
@@ -331,8 +334,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/02/LeetCode39/" rel="next" title="LeetCode-A series of Combination Sum">
-                <i class="fa fa-chevron-left"></i> LeetCode-A series of Combination Sum
+              <a href="/2017/11/26/LeetCode148/" rel="next" title="LeetCode148. Sort List">
+                <i class="fa fa-chevron-left"></i> LeetCode148. Sort List
               </a>
             
           </div>
@@ -341,8 +344,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/06/LeetCode695/" rel="prev" title="LeetCode-695. Max Area of Island">
-                LeetCode-695. Max Area of Island <i class="fa fa-chevron-right"></i>
+              <a href="/2017/12/05/LeetCode143/" rel="prev" title="LeetCode143. Reorder List">
+                LeetCode143. Reorder List <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -466,7 +469,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo1-链表的插入排序"><span class="nav-number">1.1.</span> <span class="nav-text">Demo1(链表的插入排序)</span></a></li></ol></li></ol></div>
             
 
           </div>

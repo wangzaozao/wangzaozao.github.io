@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="回溯法," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="39.Combination Sum IGiven a set of candidate numbers (C) (without duplicates) and a target number (T), find all unique combinations in C where the candidate numbers sums to T. The same repeated number">
+<meta name="keywords" content="回溯法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode-A series of Combination Sum">
+<meta property="og:url" content="http://yoursite.com/2017/11/02/LeetCode39/index.html">
+<meta property="og:site_name" content="就喜欢你看不惯我，又干不掉我的样子~">
+<meta property="og:description" content="39.Combination Sum IGiven a set of candidate numbers (C) (without duplicates) and a target number (T), find all unique combinations in C where the candidate numbers sums to T. The same repeated number">
+<meta property="og:updated_time" content="2017-11-07T02:34:09.586Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode-A series of Combination Sum">
+<meta name="twitter:description" content="39.Combination Sum IGiven a set of candidate numbers (C) (without duplicates) and a target number (T), find all unique combinations in C where the candidate numbers sums to T. The same repeated number">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/02/LeetCode39/"/>
+
+
+
+
+
+  <title>LeetCode-A series of Combination Sum | 就喜欢你看不惯我，又干不掉我的样子~</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">就喜欢你看不惯我，又干不掉我的样子~</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/02/LeetCode39/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wang zaozao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="就喜欢你看不惯我，又干不掉我的样子~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LeetCode-A series of Combination Sum</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-02T20:26:22+08:00">
+                2017-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="39-Combination-Sum-I"><a href="#39-Combination-Sum-I" class="headerlink" title="39.Combination Sum I"></a><a href="https://leetcode.com/problems/combination-sum/description/" target="_blank" rel="external">39.Combination Sum I</a></h1><p>Given a set of candidate numbers (C) (without duplicates) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.</p>
+<p>The same repeated number may be chosen from C unlimited number of times.</p>
+<p>Note:<br>All numbers (including target) will be positive integers.<br>The solution set must not contain duplicate combinations.<br>For example, given candidate set [2, 3, 6, 7] and target 7, </p>
+<h2 id="A-solution-set-is"><a href="#A-solution-set-is" class="headerlink" title="A solution set is:"></a>A solution set is:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [7],</div><div class="line">  [2, 2, 3]</div><div class="line">]</div></pre></td></tr></table></figure>
+<h2 id="Demo-用的回溯法"><a href="#Demo-用的回溯法" class="headerlink" title="Demo(用的回溯法)"></a>Demo(用的回溯法)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void search(vector&lt;int&gt;&amp;candidates,int next,vector&lt;int&gt;&amp;tmp,vector&lt;vector&lt;int&gt;&gt;&amp;result,int target)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(target==0)</div><div class="line">        &#123;</div><div class="line">            result.push_back(tmp);</div><div class="line">            <span class="built_in">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(next==candidates.size()||target-candidates[next]&lt;0)</div><div class="line">            <span class="built_in">return</span>;</div><div class="line">        tmp.push_back(candidates[next]);</div><div class="line">        search(candidates,next,tmp,result,target-candidates[next]);</div><div class="line">        tmp.pop_back();</div><div class="line">        search(candidates,next+1,tmp,result,target);</div><div class="line">    &#125;</div><div class="line">    vector&lt;vector&lt;int&gt;&gt; combinationSum(vector&lt;int&gt;&amp; candidates, int target) &#123;</div><div class="line">        vector&lt;int&gt;tmp;</div><div class="line">        vector&lt;vector&lt;int&gt;&gt;result;</div><div class="line">        sort(candidates.begin(),candidates.end());//注意这一步</div><div class="line">        search(candidates,0,tmp,result,target);</div><div class="line">        <span class="built_in">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h1 id="40-Combination-Sum-II"><a href="#40-Combination-Sum-II" class="headerlink" title="40. Combination Sum II"></a><a href="https://leetcode.com/problems/combination-sum-ii/description/" target="_blank" rel="external">40. Combination Sum II</a></h1><p>Given a collection of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.</p>
+<p>Each number in C may only be used once in the combination.</p>
+<p>Note:<br>All numbers (including target) will be positive integers.<br>The solution set must not contain duplicate combinations.<br>For example, given candidate set [10, 1, 2, 7, 6, 1, 5] and target 8, </p>
+<h2 id="A-solution-set-is-1"><a href="#A-solution-set-is-1" class="headerlink" title="A solution set is:"></a>A solution set is:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [1, 7],</div><div class="line">  [1, 2, 5],</div><div class="line">  [2, 6],</div><div class="line">  [1, 1, 6]</div><div class="line">]</div></pre></td></tr></table></figure>
+<h2 id="Demo-用的回溯法-1"><a href="#Demo-用的回溯法-1" class="headerlink" title="Demo(用的回溯法)"></a>Demo(用的回溯法)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void search(vector&lt;int&gt;&amp;candidates,int next,vector&lt;int&gt;&amp;tmp,vector&lt;vector&lt;int&gt;&gt;&amp;result,int target)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(target==0)</div><div class="line">        &#123;</div><div class="line">            result.push_back(tmp);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">for</span>(int i=next;i&lt;candidates.size();i++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(candidates[i]&gt;target)</div><div class="line">                    <span class="built_in">return</span>;</div><div class="line">                <span class="keyword">if</span>(i&amp;&amp;candidates[i]==candidates[i-1]&amp;&amp;i&gt;next)</div><div class="line">                    <span class="built_in">continue</span>;</div><div class="line">                tmp.push_back(candidates[i]);</div><div class="line">                search(candidates,i+1,tmp,result,target-candidates[i]);</div><div class="line">                tmp.pop_back();</div><div class="line">                </div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    vector&lt;vector&lt;int&gt;&gt; combinationSum2(vector&lt;int&gt;&amp; candidates, int target) &#123;</div><div class="line">        vector&lt;int&gt;tmp;</div><div class="line">        vector&lt;vector&lt;int&gt;&gt;result;</div><div class="line">        sort(candidates.begin(),candidates.end());//注意这一步</div><div class="line">        search(candidates,0,tmp,result,target);</div><div class="line">        <span class="built_in">return</span> result;</div><div class="line">    &#125;   </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h1 id="216-Combination-Sum-III"><a href="#216-Combination-Sum-III" class="headerlink" title="216. Combination Sum III"></a><a href="https://leetcode.com/problems/combination-sum-iii/description/" target="_blank" rel="external">216. Combination Sum III</a></h1><p>Find all possible combinations of k numbers that add up to a number n, given that only numbers from 1 to 9 can be used and each combination should be a unique set of numbers.</p>
+<h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: k = 3, n = 7</div><div class="line"></div><div class="line">Output:</div><div class="line"></div><div class="line">[[1,2,4]]</div></pre></td></tr></table></figure>
+<h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Input: k = 3, n = 9</div><div class="line"></div><div class="line">Output:</div><div class="line"></div><div class="line">[[1,2,6], [1,3,5], [2,3,4]]</div></pre></td></tr></table></figure>
+<h2 id="Demo-用的回溯法-2"><a href="#Demo-用的回溯法-2" class="headerlink" title="Demo(用的回溯法)"></a>Demo(用的回溯法)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    void search(vector&lt;int&gt;&amp;tmp,vector&lt;vector&lt;int&gt;&gt;&amp;res,int next,int j,int k,int target)//j是tmp数组存进去的个数</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(target==0&amp;&amp;j==k)</div><div class="line">        &#123;</div><div class="line">            res.push_back(tmp);</div><div class="line">            <span class="built_in">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(target==0||j&gt;k||next&gt;=10||target-next&lt;0)</div><div class="line">            <span class="built_in">return</span>;</div><div class="line">        tmp.push_back(next);</div><div class="line">        search(tmp,res,next+1,j+1,k,target-next);</div><div class="line">        tmp.pop_back();</div><div class="line">        search(tmp,res,next+1,j,k,target);</div><div class="line">    &#125;</div><div class="line">    vector&lt;vector&lt;int&gt;&gt; combinationSum3(int k, int n) &#123;</div><div class="line">        vector&lt;int&gt;tmp;</div><div class="line">        vector&lt;vector&lt;int&gt;&gt;res;</div><div class="line">        search(tmp,res,1,0,k,n);</div><div class="line">        <span class="built_in">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>//感觉这个题一直是在搜索下个元素满足条件吗，不满足的话return，跳过这个元素判断下个元素，<br>//满足的话先存在数组里再判断下一个元素,自己做的,开心</p>
+<h1 id="377-Combination-Sum-IV"><a href="#377-Combination-Sum-IV" class="headerlink" title="377.Combination Sum IV"></a><a href="https://leetcode.com/problems/combination-sum-iv/description/" target="_blank" rel="external">377.Combination Sum IV</a></h1><p>Given an integer array with all positive numbers and no duplicates, find the number of possible combinations that add up to a positive integer target.</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">nums = [1, 2, 3]</div><div class="line">target = 4</div><div class="line"></div><div class="line">The possible combination ways are:</div><div class="line">(1, 1, 1, 1)</div><div class="line">(1, 1, 2)</div><div class="line">(1, 2, 1)</div><div class="line">(1, 3)</div><div class="line">(2, 1, 1)</div><div class="line">(2, 2)</div><div class="line">(3, 1)</div><div class="line"></div><div class="line">Note that different sequences are counted as different combinations.</div><div class="line"></div><div class="line">Therefore the output is 7.</div></pre></td></tr></table></figure>
+<h2 id="Demo-用的动态规划"><a href="#Demo-用的动态规划" class="headerlink" title="Demo(用的动态规划)"></a>Demo(用的动态规划)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int combinationSum4(vector&lt;int&gt;&amp; nums, int target) &#123;</div><div class="line">        vector&lt;int&gt;dp(target+1,0);</div><div class="line">        dp[0]=1;</div><div class="line">        sort(nums.begin(),nums.end());</div><div class="line">        int i;</div><div class="line">        <span class="keyword">for</span>(i=1;i&lt;=target;i++)</div><div class="line">        &#123;  </div><div class="line">            <span class="keyword">for</span>(int a:nums)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(i&lt;a)</div><div class="line">                    <span class="built_in">break</span>;</div><div class="line">                dp[i]+=dp[i<span class="_">-a</span>];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> dp[i-1];</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/回溯法/" rel="tag"># 回溯法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/31/LeetCode392/" rel="next" title="LeetCode-392. Is Subsequence">
+                <i class="fa fa-chevron-left"></i> LeetCode-392. Is Subsequence
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/02/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wang zaozao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#39-Combination-Sum-I"><span class="nav-number">1.</span> <span class="nav-text">39.Combination Sum I</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-solution-set-is"><span class="nav-number">1.1.</span> <span class="nav-text">A solution set is:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo-用的回溯法"><span class="nav-number">1.2.</span> <span class="nav-text">Demo(用的回溯法)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#40-Combination-Sum-II"><span class="nav-number">2.</span> <span class="nav-text">40. Combination Sum II</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-solution-set-is-1"><span class="nav-number">2.1.</span> <span class="nav-text">A solution set is:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo-用的回溯法-1"><span class="nav-number">2.2.</span> <span class="nav-text">Demo(用的回溯法)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#216-Combination-Sum-III"><span class="nav-number">3.</span> <span class="nav-text">216. Combination Sum III</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Example-1"><span class="nav-number">3.1.</span> <span class="nav-text">Example 1:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example-2"><span class="nav-number">3.2.</span> <span class="nav-text">Example 2:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo-用的回溯法-2"><span class="nav-number">3.3.</span> <span class="nav-text">Demo(用的回溯法)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#377-Combination-Sum-IV"><span class="nav-number">4.</span> <span class="nav-text">377.Combination Sum IV</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">4.1.</span> <span class="nav-text">Example:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo-用的动态规划"><span class="nav-number">4.2.</span> <span class="nav-text">Demo(用的动态规划)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wang zaozao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
