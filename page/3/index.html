@@ -356,7 +356,7 @@
           
           DescriptionGiven a linked list, determine if it has a cycle in it.
 Follow up:Can you solve it without using extra space?
-Demo(快慢指针)1234567891011121314
+Demo(快慢指针)123456789101112131415161718192021222324/** * Definition for singly-linked list. * struct ListNode &#123; *     int val; *     ListNode *next; *     ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public:    bool hasCycle(ListNode *head) &#123;        if(head==NULL||head-&gt;next==NULL)            return false;        ListNode*slow=h
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -483,7 +483,9 @@ Demo(快慢指针)1234567891011121314
         
           
           DescriptionGiven a singly linked list L: L0→L1→…→Ln-1→Ln,reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
-You must do this in-place without altering the nodes’ 
+You must do this in-place without altering the nodes’ values.
+Example1Given &#123;1,2,3,4&#125;, reorder it to &#123;1,4,2,3&#125;.
+Demo1(链表)123456789101112131415161718192021222324252627282930313233343536373839404142/** * Definition for singly-linked list. * struct ListNode &#123; *     int val; *     ListNode *next; *     ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -610,7 +612,7 @@ You must do this in-place without altering the nodes’
         
           
           DescriptionSort a linked list using insertion sort.
-Demo1(链表的插入排序)123456789101112131415161718192021222324252627282930/** * Definition for singly-linke
+Demo1(链表的插入排序)123456789101112131415161718192021222324252627282930/** * Definition for singly-linked list. * struct ListNode &#123; *     int val; *     ListNode *next; *     ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public:    ListNode *insertionSortList(ListNode *head) &#123;        ListNode *sortedHead = new ListNode(-1);        while(head != NULL)        &#123;            //保存head位置            ListNod
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -737,7 +739,7 @@ Demo1(链表的插入排序)123456789101112131415161718192021222324252627282930/
         
           
           DescriptionSort a linked list in O(n log n) time using constant space complexity.
-Demo1(用的分治法加递归)12345678910111213141516171819202122232425262728293031
+Demo1(用的分治法加递归)123456789101112131415161718192021222324252627282930313233343536373839404142434445464748class Solution &#123;  public:      ListNode *sortList(ListNode *head) &#123;          if (head == NULL || head-&gt;next == NULL) return head;          ListNode* slower = head; //slower是左1/2链表的尾巴          ListNode* slow = head-&gt;next;//slow是右1/2链表的开始          ListNode* fast = head-&gt;next-&gt;next;//fast每次走2步，sl
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -864,7 +866,10 @@ Demo1(用的分治法加递归)1234567891011121314151617181920212223242526272829
         
           
           DescriptionEvaluate the value of an arithmetic expression in Reverse Polish Notation.
-Valid operators are +, -, *, /. Each operand may be an integer o
+Valid operators are +, -, *, /. Each operand may be an integer or another expression.
+Example 1:1["2", "1", "+", "3", "*"] -&gt; ((2 + 1) * 3) -&gt; 9
+Example 2:1["4", "13", "5", "/", "+"] -&gt; (4 + (13 / 5)) -&gt; 6
+Demo1(用的栈)12345678910111213141516171819202122232425262728293031323334353637383940414243444546class Solution &#123;public:    int evalRPN(vector&lt;string&gt;&amp; tokens) &#123;        stack&lt;in
           ...
           <!--noindex-->
           <div class="post-button text-center">

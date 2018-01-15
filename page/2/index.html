@@ -355,7 +355,10 @@
         
           
           DescriptionClone an undirected graph. Each node in the graph contains a label and a list of its neighbors.
-OJ’s undirected graph serialization:Nodes a
+OJ’s undirected graph serialization:Nodes are labeled uniquely.
+We use # as a separator for each node, and , as a separator for node label and each neighbor of the node.As an example, consider the serialized graph {0,1,2#1,2#2,2}.
+The graph has a total of three nodes, and therefore contains three parts as separated by #.
+First node is labeled as 0. Connect node 0 to both nodes 1 and 2.Secon
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -482,7 +485,10 @@ OJ’s undirected graph serialization:Nodes a
         
           
           DescriptionThere are N gas stations along a circular route, where the amount of gas at station i is gas[i].
-You have a car with an unlimited gas tank 
+You have a car with an unlimited gas tank and it costs cost[i] of gas to travel from station i to its next station (i+1). You begin the journey with an empty tank at one of the gas stations.
+Return the starting gas station’s index if you can travel around the circuit once, otherwise return -1.
+Note:The solution is guaranteed to be unique.
+Demo(用了一个数学定理)12345678910111213141516int canComplet
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -609,7 +615,8 @@ You have a car with an unlimited gas tank
         
           
           DescriptionGiven an array of integers, every element appears three times except for one, which appears exactly once. Find that single one.
-Note:Your a
+Note:Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+Demo(按位与或)1234567891011121314151617181920class Solution &#123;public:    int singleNumber(vector&lt;int&gt;&amp; nums) &#123;        int length=nums.size();        int result=0;        for(int i=0;i&lt;32;i++)        &#123;            int count=0;  
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -736,7 +743,8 @@ Note:Your a
         
           
           DescriptionA linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.
-Return 
+Return a deep copy of the list.
+Demo1(使用hash_map)1234567891011121314151617181920212223242526272829303132333435363738394041/** * Definition for singly-linked list with a random pointer. * struct RandomListNode &#123; *     int label; *     RandomListNode *next, *random; *     RandomListNode(int x) : label(x), next(NULL), random(NULL) &#123;&#125; * &#125;;
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -862,7 +870,9 @@ Return
       
         
           
-          DescriptionGiven a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-sep
+          DescriptionGiven a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words. You may assume the dictionary does not contain duplicate words.
+UPDATE (2017/1/4):The wordDict parameter had been changed to a list of strings (instead of a set of strings). Please reload the code definition to get the latest changes.
+Example12345givens = "leetcode",dict = ["leet", "code"].Return tru
           ...
           <!--noindex-->
           <div class="post-button text-center">

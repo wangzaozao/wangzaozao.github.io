@@ -355,7 +355,9 @@
         
           
           DescriptionSay you have an array for which the ith element is the price of a given stock on day i.
-Design an algorithm to find the maximum profit. You
+Design an algorithm to find the maximum profit. You may complete at most two transactions.
+Note:You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
+Demo(局部最优和全局最优)123456789101112131415161718192021class Solution &#123;public:    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;        int n=prices.size();        if(n==0)            retur
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -482,7 +484,8 @@ Design an algorithm to find the maximum profit. You
         
           
           DescriptionGiven a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
-Example12"A man, a plan, a ca
+Example12"A man, a plan, a canal: Panama" is a palindrome."race a car" is not a palindrome.
+Demo12345678910111213class Solution &#123;public:    bool isPalindrome(string s) &#123;        for(int i=0,j=s.size()-1;i&lt;j;i++,j--)        &#123;            while(!isalnum(s[i])&amp;&amp;i&lt;j)i++;            while(!isalnum(s[j])&amp;&amp;i&lt;j)j--;            if(toupper(s[i])!=to
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -609,7 +612,10 @@ Example12"A man, a plan, a ca
         
           
           DescriptionGiven a binary tree containing digits from 0-9 only, each root-to-leaf path could represent a number.
-An example is the root-to-leaf path 1
+An example is the root-to-leaf path 1-&gt;2-&gt;3 which represents the number 123.
+Find the total sum of all root-to-leaf numbers.
+Example1234567    1   / \  2   3The root-to-leaf path 1-&gt;2 represents the number 12.The root-to-leaf path 1-&gt;3 represents the number 13.Return the sum = 12 + 13 = 25.
+Demo(递归)123456789101112131415161718192021222324/** * Definition for a binary tree n
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -736,7 +742,9 @@ An example is the root-to-leaf path 1
         
           
           DescriptionGiven a string s, partition s such that every substring of the partition is a palindrome.
-Return the minimum cuts needed for a palindrome p
+Return the minimum cuts needed for a palindrome partitioning of s.
+Example12given s = "aab",Return 1 since the palindrome partitioning ["aa","b"] could be produced using 1 cut.
+Demo(动态规划)12345678910111213141516171819202122class Solution &#123;public:    int minCut(string s) &#123;        int n=s.size();        vector&lt;vector&lt;int&gt;&gt;dp(n, vector&lt;int&gt;(n, 0));        vector&lt;int&gt;
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -864,6 +872,8 @@ Return the minimum cuts needed for a palindrome p
           
           DescriptionGiven a string s, partition s such that every substring of the partition is a palindrome.
 Return all possible palindrome partitioning of s.
+Example1234567given s = "aab",Return[  ["aa","b"],  ["a","a","b"]]
+Demo(回溯法)123456789101112131415161718192021222324252627282930313233343536373839class Solution &#123;public:    vector&lt;vector&lt;string&gt;&gt; partition(string s) &#123;        vector&lt;vector&lt;string&gt;&gt;res;        vector&lt;string&gt;path;        helper(s,0,res,path);   
           ...
           <!--noindex-->
           <div class="post-button text-center">

@@ -355,7 +355,10 @@
         
           
           DescriptionYou have a total of n coins that you want to form in a staircase shape, where every k-th row must have exactly k coins.
-Given n, find the t
+Given n, find the total number of full staircase rows that can be formed.
+n is a non-negative integer and fits within the range of a 32-bit signed integer.
+Example 1:12345678n = 5The coins can form the following rows:¤¤ ¤¤ ¤Because the 3rd row is incomplete, we return 2.
+Example 2:123456789n = 8The coins can form the following rows:¤¤ ¤¤ ¤ ¤¤ ¤Because the 4th row is 
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -481,7 +484,9 @@ Given n, find the t
       
         
           
-          DescriptionGiven an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number m
+          DescriptionGiven an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.
+Note:You must not modify the array (assume the array is read only).You must use only constant, O(1) extra space.Your runtime complexity should be less than O(n2).There is only one duplicate number in the array, but it could be repeated more than once.
+Demo(二分法)123456
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -608,7 +613,8 @@ Given n, find the t
         
           
           DescriptionGiven a binary search tree, write a function kthSmallest to find the kth smallest element in it.
-Note:You may assume k is always valid, 1 ≤
+Note:You may assume k is always valid, 1 ≤ k ≤ BST’s total elements.
+Demo(二叉搜索)12345678910111213141516171819202122232425262728293031/** * Definition for a binary tree node. * struct TreeNode &#123; *     int val; *     TreeNode *left; *     TreeNode *right; *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125; * &#125;; */class Solution &#123;public:    int calcLeftsize(Tree
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -735,7 +741,9 @@ Note:You may assume k is always valid, 1 ≤
         
           
           DescriptionGiven an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.
-T
+The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.
+You may assume that each input would have exactly one solution and you may not use the same element twice.
+Example12Input: numbers
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -861,7 +869,9 @@ T
       
         
           
-          DescriptionGiven a non-empty 2D array grid of 0’s and 1’s, an island is a group of 1’s (representing land) connected 4-directionally (horizontal or ve
+          DescriptionGiven a non-empty 2D array grid of 0’s and 1’s, an island is a group of 1’s (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.
+Find the maximum area of an island in the given 2D array. (If there is no island, the maximum area is 0.)
+Example 1:123456789[[0,0,1,0,0,0,0,1,0,0,0,0,0], [0,0,0,0,0,0,0,1,1,1,0,0,0], [0,1,1,0,1,0,0,0,0,0,0,0,0], [0,1,0,0,1,1,0,0,1,0,1,0,0], [0,1,0,0,1,1,0,0,1,1,1,0,0], [0,
           ...
           <!--noindex-->
           <div class="post-button text-center">
