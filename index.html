@@ -354,13 +354,16 @@
       
         
           
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/" target="_blank" rel="external">Description</a></h1><p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
-<p>Design an algorithm to find the maximum profit. You may complete at most two transactions.</p>
-<p>Note:<br>You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
-<h2 id="Demo-局部最优和全局最优"><a href="#Demo-局部最优和全局最优" class="headerlink" title="Demo(局部最优和全局最优)"></a>Demo(局部最优和全局最优)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</div><div class="line">        int n=prices.size();</div><div class="line">        <span class="keyword">if</span>(n==0)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        vector&lt;vector&lt;int&gt;&gt; <span class="built_in">local</span>(n, vector&lt;int&gt;(3, 0));</div><div class="line">        vector&lt;vector&lt;int&gt;&gt; global(n, vector&lt;int&gt;(3, 0));</div><div class="line">        <span class="keyword">for</span>(int i=1;i&lt;n;i++)//第一天局部收益和全局收益都为0,所以从第二天算起</div><div class="line">        &#123;</div><div class="line">            int diff=prices[i]-prices[i-1];</div><div class="line">            <span class="keyword">for</span>(int j=1;j&lt;=2;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="built_in">local</span>[i][j]=max(global[i-1][j-1]+max(0,diff),<span class="built_in">local</span>[i-1][j]+diff);//max中最后一个参数是+diff，因为<span class="built_in">local</span>是今天卖出最后一笔股票</div><div class="line">                global[i][j]=max(global[i-1][j],<span class="built_in">local</span>[i][j]);</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> global[n-1][2];</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>//思路：<br>这里我们需要两个递推公式来分别更新两个变量local和global，我们其实可以求至少k次交易的最大利润，找到通解后可以设定 k = 2，即为本题的解答。我们定义local[i][j]为在到达第i天时最多可进行j次交易并且最后一次交易在最后一天卖出的最大利润，此为局部最优。然后我们定义global[i][j]为在到达第i天时最多可进行j次交易的最大利润，此为全局最优。它们的递推式为：<br>local[i][j] = max(global[i - 1][j - 1] + max(diff, 0), local[i - 1][j] + diff)<br>global[i][j] = max(local[i][j], global[i - 1][j])<br>其中局部最优值是比较前一天并少交易一次的全局最优加上大于0的差值，和前一天的局部最优加上差值中取较大值，而全局最优比较局部最优和前一天的全局最优。<br>ps:这道题其实挺难的，同时用到了局部最优和全局最优</p>
-
-          
+          DescriptionSay you have an array for which the ith element is the price of a given stock on day i.
+Design an algorithm to find the maximum profit. You
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/10/LeetCode123/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -478,11 +481,16 @@
       
         
           
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/valid-palindrome/description/" target="_blank" rel="external">Description</a></h1><p>Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">"A man, a plan, a canal: Panama"</span> is a palindrome.</div><div class="line"><span class="string">"race a car"</span> is not a palindrome.</div></pre></td></tr></table></figure>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    bool isPalindrome(string s) &#123;</div><div class="line">        <span class="keyword">for</span>(int i=0,j=s.size()-1;i&lt;j;i++,j--)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">while</span>(!isalnum(s[i])&amp;&amp;i&lt;j)i++;</div><div class="line">            <span class="keyword">while</span>(!isalnum(s[j])&amp;&amp;i&lt;j)j--;</div><div class="line">            <span class="keyword">if</span>(toupper(s[i])!=toupper(s[j]))//判断不区分大小写字母是否相等的方法</div><div class="line">                <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
-          
+          DescriptionGiven a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+Example12"A man, a plan, a ca
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/31/LeetCode125/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -600,14 +608,16 @@
       
         
           
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/sum-root-to-leaf-numbers/description/" target="_blank" rel="external">Description</a></h1><p>Given a binary tree containing digits from 0-9 only, each root-to-leaf path could represent a number.</p>
-<p>An example is the root-to-leaf path 1-&gt;2-&gt;3 which represents the number 123.</p>
-<p>Find the total sum of all root-to-leaf numbers.</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    1</div><div class="line">   / \</div><div class="line">  2   3</div><div class="line">The root-to-leaf path 1-&gt;2 represents the number 12.</div><div class="line">The root-to-leaf path 1-&gt;3 represents the number 13.</div><div class="line"></div><div class="line">Return the sum = 12 + 13 = 25.</div></pre></td></tr></table></figure>
-<h2 id="Demo-递归"><a href="#Demo-递归" class="headerlink" title="Demo(递归)"></a>Demo(递归)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> a binary tree node.</div><div class="line"> * struct TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int sumNumbers(TreeNode* root) &#123;</div><div class="line">        <span class="built_in">return</span> dfs(root,0);</div><div class="line">    &#125;</div><div class="line">    int dfs(TreeNode*root,int sum)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(root==NULL)</div><div class="line">            <span class="built_in">return</span> 0;</div><div class="line">        sum=sum*10+root-&gt;val;</div><div class="line">        <span class="keyword">if</span>(root-&gt;left==NULL&amp;&amp;root-&gt;right==NULL)</div><div class="line">            <span class="built_in">return</span> sum;</div><div class="line">        <span class="built_in">return</span> dfs(root-&gt;left,sum)+dfs(root-&gt;right,sum);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>//思路：<br>用递归是比较自然的想法，节点可能出现的情况:<br>(1)左孩子或者右孩子两个都为NULL(叶节点)，此时递归返回。<br>(2)左孩子或者右孩子某一个为NULL，此时继续推进下一层调用，只是在下一层中，会发现有一个为NULL节点，走到NULL节点当然应该返回了。<br>(3)左孩子或者右孩子都不为NULL，此时继续推进下一层的调用。<br>虽然(2)和(3)都是继续推进下一层的调用，但是由于(2)会遇到NULL节点，对于这个特殊情况，需要写句话处理一下。<br>ps:递归要想清楚这些问题。(1)要用到什么参数 (2)节点都有哪些情况? (3)递归什么时候返回？</p>
-
-          
+          DescriptionGiven a binary tree containing digits from 0-9 only, each root-to-leaf path could represent a number.
+An example is the root-to-leaf path 1
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/29/LeetCode129/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -725,13 +735,16 @@
       
         
           
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/palindrome-partitioning-ii/description/" target="_blank" rel="external">Description</a></h1><p>Given a string s, partition s such that every substring of the partition is a palindrome.</p>
-<p>Return the minimum cuts needed for a palindrome partitioning of s.</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">given s = <span class="string">"aab"</span>,</div><div class="line">Return 1 since the palindrome partitioning [<span class="string">"aa"</span>,<span class="string">"b"</span>] could be produced using 1 cut.</div></pre></td></tr></table></figure>
-<h2 id="Demo-动态规划"><a href="#Demo-动态规划" class="headerlink" title="Demo(动态规划)"></a>Demo(动态规划)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    int minCut(string s) &#123;</div><div class="line">        int n=s.size();</div><div class="line">        vector&lt;vector&lt;int&gt;&gt;dp(n, vector&lt;int&gt;(n, 0));</div><div class="line">        vector&lt;int&gt;cut(n+1,INT_MAX);</div><div class="line">        cut[n]=0;</div><div class="line">        <span class="keyword">for</span>(int i=n-1;i&gt;=0;i--)</div><div class="line">        &#123;</div><div class="line">            //cut[i]=INT_MAX;</div><div class="line">            <span class="keyword">for</span>(int j=i;j&lt;n;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span>(s[i]==s[j]&amp;&amp;(j-i&lt;=1||dp[i+1][j-1]==1))//一激动就把大小号写反，-_-||</div><div class="line">                &#123;</div><div class="line">                    dp[i][j]=1;</div><div class="line">                    cut[i]=min(cut[j+1]+1,cut[i]);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> cut[0]-1;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>//思路：<br>对于一个字符串，我们需要考虑所有可能的分割，这个问题可以抽象成一个DP问题，对于一个长度为n的字符串，设DP[i][j]表示第i个字符到第j个字符是否构成回文，若是，则DP[i][j]=1;若否，则DP[i][j]=0;如此，根据回文的约束条件（对称性），DP[i][j]构成回文需满足：<br>1、输入字符串s[i]==s[j],对称性；<br>2、条件1满足并不能保证i到j构成回文，还须：（j-i）&lt;=1或者DP[i+1][j-1]=1；即，i、j相邻或者i=j，也就是相邻字符相等构成回文或者字符自身构成回文，如果i、j不相邻或者相等，i到j构成回文的前提就是DP[i+1][j-1]=1.<br>cut[i]表示第i个字符到最后一个字符所构成的子串的最小分割次数，这里的i有约束条件，就是第i个位置必须是可进行回文分割的，即DP[i][j]==1 (j&gt;=i&amp;&amp;j&lt;s.length())</p>
-
-          
+          DescriptionGiven a string s, partition s such that every substring of the partition is a palindrome.
+Return the minimum cuts needed for a palindrome p
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/27/LeetCode132/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -849,13 +862,16 @@
       
         
           
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/palindrome-partitioning/description/" target="_blank" rel="external">Description</a></h1><p>Given a string s, partition s such that every substring of the partition is a palindrome.</p>
-<p>Return all possible palindrome partitioning of s.</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">given s = <span class="string">"aab"</span>,</div><div class="line">Return</div><div class="line"></div><div class="line">[</div><div class="line">  [<span class="string">"aa"</span>,<span class="string">"b"</span>],</div><div class="line">  [<span class="string">"a"</span>,<span class="string">"a"</span>,<span class="string">"b"</span>]</div><div class="line">]</div></pre></td></tr></table></figure>
-<h2 id="Demo-回溯法"><a href="#Demo-回溯法" class="headerlink" title="Demo(回溯法)"></a>Demo(回溯法)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    vector&lt;vector&lt;string&gt;&gt; partition(string s) &#123;</div><div class="line">        vector&lt;vector&lt;string&gt;&gt;res;</div><div class="line">        vector&lt;string&gt;path;</div><div class="line">        helper(s,0,res,path);</div><div class="line">        <span class="built_in">return</span> res;</div><div class="line">    &#125;</div><div class="line">    void helper(string s,int pos,vector&lt;vector&lt;string&gt;&gt;&amp;res,vector&lt;string&gt;&amp;path)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(pos==s.size())</div><div class="line">        &#123;</div><div class="line">            res.push_back(path);</div><div class="line">            <span class="built_in">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(int i=pos;i&lt;s.size();i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(isPalindrome(s.substr(pos,i-pos+1)))</div><div class="line">            &#123;</div><div class="line">                path.push_back(s.substr(pos,i-pos+1));</div><div class="line">                helper(s,i+1,res,path);</div><div class="line">                path.pop_back();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    bool isPalindrome(string s)</div><div class="line">    &#123;</div><div class="line">        int start=0;</div><div class="line">        int end=s.size()-1;</div><div class="line">        <span class="keyword">while</span>(start&lt;end)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(s[start++]!=s[end--])//注意是end--</div><div class="line">            &#123;</div><div class="line">                <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>//思路：<br>于是感觉对于一个字符串，可以对这个字符串进行遍历，如果前pos个字符串本身是个回文字符，那么只需要求解后面的子字符的回文串即可，于是这个问题被分解成了一个更小的问题。这道题更像一个分治法的题，将问题规模不断缩小，当然的遍历字符串的过程中需要进行回溯。除了需要一个进行递归的辅助函数外，还需要定义一个判断一个字符串是否是回文字符串的辅助函数，程序的逻辑非常简单。<br>这种回溯法题不会多总结，多找规律啊</p>
-
-          
+          DescriptionGiven a string s, partition s such that every substring of the partition is a palindrome.
+Return all possible palindrome partitioning of s.
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/27/LeetCode131/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
