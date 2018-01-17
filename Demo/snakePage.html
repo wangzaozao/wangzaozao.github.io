@@ -189,7 +189,7 @@
                 var y=this.body[length][1];
                 sum++;
                 score.show();//score已经定义为全局对象，而且在window.onload里已经实例化，可以直接调用Score类里面的函数
-                if(sum!=0&&sum%3==0)
+                if(sum!=0&&sum%15==0)
             	{
             		speed=speed*0.8;
             		clearTimeout(timer);
