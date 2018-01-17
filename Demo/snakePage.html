@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>贪吃蛇</title>
+<script>
+    var map; //地图类对象
+    var snake; //蛇类对象
+    var food; //食物类对象
+    var timer; //定时器对象
+    var sum=0; //分数
+    var score;//分数对象
+	var speed=200;
+    
+    //地图类
+    function Map()
+    {
+        this.width=800; //地图宽度
+        this.height=400; //地图高度
+        this.position='absolute'; //定位方式
+        this.color='#cccccc'; //地图颜色
+        this._map=null; //保存地图dom元素
+        
+        this.show=function()
+        {
+            //用于显示地图
+            //创建地图div元素
+            this._map = document.createElement('div');
+            //设置地图样式
+            this._map.style.width = this.width + 'px';
+            this._map.style.height = this.height + 'px';
+            this._map.style.position = this.position ;
+            this._map.style.backgroundColor = this.color ;
+            
+            //将地图div元素追加到body标签之间
+            document.getElementsByTagName('body')[0].appendChild(this._map);
+        };
+    }
+    
+    //食物类
+    function Food()
+    {
+        this.width=20; //宽度
+        this.height=20; //高度
+        this.position='absolute'; //定位方式
+        this.color='#00ff00'; //食物颜色
+        this._food=null; //用于保存食物dom元素
+        this.x=0; //横向第几个格
+        this.y=0; //纵向第几个格
+        
+        this.show=function()
+        {
+            //用于显示食物
+            if(this._food==null)
+            {
+                this._food=document.createElement('div');
+                
+                //设置食物样式
+                this._food.style.width = this.width + 'px';
+                this._food.style.height = this.height + 'px';
+                this._food.style.position = this.position ;
+                this._food.style.backgroundColor = this.color ;
+                
+                map._map.appendChild(this._food);
+            }
+            //如果之前创建过，只需要重新设置坐标
+            this.x=Math.floor(Math.random()*40);
+            this.y=Math.floor(Math.random()*20);
+            this._food.style.left = this.x*this.width+'px';
+            this._food.style.top = this.y*this.height+'px';
+        };
+    }
+  	//分数
+  	function Score()
+  	{
+        this.width=60; //宽度
+        this.height=20; //高度
+        this.position='absolute'; //定位方式
+        this.color='#00ff00'; //食物颜色
+        this._score=null; //用于保存分数dom元素
+
+        
+        this.show=function()
+        {
+            //用于显示分数
+            if(this._score==null)
+            {
+                this._score=document.createElement('p');
+                
+                //设置分数样式
+                this._score.style.width = this.width + 'px';
+                this._score.style.height = this.height + 'px';
+                this._score.style.position = this.position ;
+                this._score.style.color='red';
+                this._score.style.fontSize='10px';   
+                map._map.appendChild(this._score);
+            }
+            //如果之前创建过，只需要重新设置坐标
+            this._score.innerText='分数:'+sum;
+            this._score.style.marginTop='4px';
+            this._score.style.left = '740px';
+            this._score.style.top =  '0px';
+        };
+  	}    
+    //蛇类
+    function Snake()
+    {
+        this.width=20;    //蛇节宽度
+        this.height=20;    //蛇节高度
+        this.position='absolute'; //蛇节定位方式
+        this.direct=''; //蛇的移动方向
+        //所有蛇节全部信息
+        this.body=[[3,2,'red',null],[2,2,'blue',null],[1,2,'blue',null]];//第四个元素是蛇节借以显示的div，所以样式都通过改变它来改变
+        
+        this.setDirect = function(code)
+        {
+            switch(code)
+            {
+                case 37:
+                    this.direct='left';
+                    break;
+                case 38:
+                    this.direct='up';
+                    break;
+                case 39:
+                    this.direct='right';
+                    break;
+                case 40:
+                    this.direct='down';
+                    break;
+            }
+        }
+        
+        this.show=function()
+        {
+            //用于显示蛇
+            for(var i=0;i<this.body.length;i++)
+            {
+            	//如果蛇节没有被创建
+                if(this.body[i][3]==null)
+                {
+                    this.body[i][3] = document.createElement('div');
+                    this.body[i][3].style.width = this.width +'px';
+                    this.body[i][3].style.height = this.height +'px';
+                    this.body[i][3].style.position = this.position;
+                    this.body[i][3].style.backgroundColor = this.body[i][2];//在蛇吃到食物事件里已添加前面两个元素的值，现在就可以加以引用
+                    map._map.appendChild(this.body[i][3]);
+                }
+                //设置蛇节的横纵坐标
+                this.body[i][3].style.left=this.body[i][0]*this.width+'px';
+                this.body[i][3].style.top=this.body[i][1]*this.height+'px';
+            }
+        }
+        
+        this.move = function()
+        {
+            //移动蛇身
+            var length = this.body.length-1;
+            
+            for(var i=length;i>0;i--)
+            {
+                //让后面的蛇节的坐标等于前面蛇节的坐标
+                this.body[i][0]=this.body[i-1][0]; //横坐标
+                this.body[i][1]=this.body[i-1][1]; //纵坐标
+                
+            }
+            switch(this.direct)
+            {
+                case 'right':
+                    this.body[0][0]=this.body[0][0]+1;
+                    break;
+                case 'down':
+                    this.body[0][1]=this.body[0][1]+1;
+                    break;
+                case 'left':
+                    this.body[0][0]=this.body[0][0]-1;
+                    break;
+                case 'up':
+                    this.body[0][1]=this.body[0][1]-1;
+                    break;
+                default:
+                    return;
+            }
+            
+            //判断蛇吃到食物
+            if(this.body[1][0]==food.x&&this.body[1][1]==food.y)//简单的碰撞检测，如果第一个节点完全穿过食物即第二个节点碰到食物就判定为碰撞
+            {
+                var x=this.body[length][0];//前面已定义length = this.body.length-1;
+                var y=this.body[length][1];
+                sum++;
+                score.show();//score已经定义为全局对象，而且在window.onload里已经实例化，可以直接调用Score类里面的函数
+                if(sum!=0&&sum%3==0)
+            	{
+            		speed=speed*0.8;
+            		clearTimeout(timer);
+            		timer = setInterval('snake.move()',speed);
+            		alert("恭喜，进入下一关");
+            		
+            	}
+                this.body.push([x,y,'blue',null]);
+                food.show();
+            }
+            
+            //判断撞墙死
+            if(this.body[0][0]<0 || this.body[0][0]>39 ||this.body[0][1]<0 ||this.body[0][1]>19)
+            {
+                clearTimeout(timer);
+                window.setTimeout("window.location='endPage.html#'+sum",2000); 
+                return;
+            }
+            
+            //吃到自己死
+            for(var i=1;i<this.body.length;i++)
+            {
+                if(this.body[0][0]==this.body[i][0]&&this.body[0][1]==this.body[i][1])
+                {
+                    clearTimeout(timer);
+                    window.setTimeout("window.location='endPage.html#'+sum",2000); 
+                    return;
+                }
+            }
+            
+            this.show();
+        }
+    }
+
+    
+    window.onload = function()
+    {
+    	var lastDirect=39;//保存上次的方向
+        map = new Map(); //实例化地图类对象
+        map.show();    //显示地图
+        
+        
+        food=new Food(); //实例化食物类对象
+        food.show(); //显示食物
+        
+        score=new Score();//实例化分数类对象
+        score.show();//显示分数
+        
+        snake = new Snake(); //实例化蛇类对象
+        snake.show();
+        snake.setDirect(39);
+        timer = setInterval('snake.move()',speed);
+        
+        
+        document.onkeydown = function()
+        {
+            var code;
+            if(window.event)
+            {
+                code=window.event.keyCode;
+            }else
+            {
+                code = event.keyCode;
+            }
+            if(Math.abs(code-lastDirect)!=2)//如果这次的方向和上次不相反时才改变方向
+        	{
+        		snake.setDirect(code);
+        		lastDirect=code;
+        	}
+        };
+            
+    }
+</script>
+</head>
+<body>
+
+</body>
+</html>
