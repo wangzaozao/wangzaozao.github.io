@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="DescriptionGiven inorder and postorder traversal of a tree, construct the binary tree. Note:You may assume that duplicates do not exist in the tree.## Example123456789inorder = [9,3,15,20,7]postorder">
+<meta name="description" content="DescriptionGiven inorder and postorder traversal of a tree, construct the binary tree. Note:You may assume that duplicates do not exist in the tree. Example123456789inorder = [9,3,15,20,7]postorder =">
 <meta name="keywords" content="树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode106. Construct Binary Tree from Inorder and Postorder Traversal">
 <meta property="og:url" content="http://yoursite.com/2018/02/05/LeetCode106/index.html">
 <meta property="og:site_name" content="In me the tiger sniffs the rose">
-<meta property="og:description" content="DescriptionGiven inorder and postorder traversal of a tree, construct the binary tree. Note:You may assume that duplicates do not exist in the tree.## Example123456789inorder = [9,3,15,20,7]postorder">
+<meta property="og:description" content="DescriptionGiven inorder and postorder traversal of a tree, construct the binary tree. Note:You may assume that duplicates do not exist in the tree. Example123456789inorder = [9,3,15,20,7]postorder =">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-05T10:26:46.753Z">
+<meta property="og:updated_time" content="2018-02-05T10:29:37.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode106. Construct Binary Tree from Inorder and Postorder Traversal">
-<meta name="twitter:description" content="DescriptionGiven inorder and postorder traversal of a tree, construct the binary tree. Note:You may assume that duplicates do not exist in the tree.## Example123456789inorder = [9,3,15,20,7]postorder">
+<meta name="twitter:description" content="DescriptionGiven inorder and postorder traversal of a tree, construct the binary tree. Note:You may assume that duplicates do not exist in the tree. Example123456789inorder = [9,3,15,20,7]postorder =">
 
 
 
@@ -352,7 +352,8 @@
 
       
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a><a href="https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/description/" target="_blank" rel="external">Description</a></h1><p>Given inorder and postorder traversal of a tree, construct the binary tree.</p>
-<p>Note:<br>You may assume that duplicates do not exist in the tree.## Example<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">inorder = [9,3,15,20,7]</div><div class="line">postorder = [9,15,7,20,3]</div><div class="line">Return the following binary tree:</div><div class="line"></div><div class="line">    3</div><div class="line">   / \</div><div class="line">  9  20</div><div class="line">    /  \</div><div class="line">   15   7</div></pre></td></tr></table></figure></p>
+<p>Note:<br>You may assume that duplicates do not exist in the tree.</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">inorder = [9,3,15,20,7]</div><div class="line">postorder = [9,15,7,20,3]</div><div class="line">Return the following binary tree:</div><div class="line"></div><div class="line">    3</div><div class="line">   / \</div><div class="line">  9  20</div><div class="line">    /  \</div><div class="line">   15   7</div></pre></td></tr></table></figure>
 <h2 id="Demo-递归"><a href="#Demo-递归" class="headerlink" title="Demo(递归)"></a>Demo(递归)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Definition <span class="keyword">for</span> a binary tree node.</div><div class="line"> * struct TreeNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     TreeNode *left;</div><div class="line"> *     TreeNode *right;</div><div class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line">class Solution &#123;</div><div class="line">public:</div><div class="line">    TreeNode* buildTree(vector&lt;int&gt;&amp; inorder, vector&lt;int&gt;&amp; postorder) &#123;</div><div class="line">        <span class="built_in">return</span> buildTRee(inorder,0,inorder.size()-1,postorder,0,postorder.size()-1);</div><div class="line">    &#125;</div><div class="line">    TreeNode* buildTRee(vector&lt;int&gt;&amp; inorder,int iLeft,int iRight,vector&lt;int&gt;&amp; postorder,int pLeft,int pRight)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(iLeft&gt;iRight||pLeft&gt;pRight)</div><div class="line">            <span class="built_in">return</span> NULL;</div><div class="line">        int i;</div><div class="line">        TreeNode*cur=new TreeNode(postorder[pRight]);</div><div class="line">        <span class="keyword">for</span>(i=iLeft;i&lt;=iRight;i++)</div><div class="line">            <span class="keyword">if</span>(inorder[i]==cur-&gt;val)</div><div class="line">                <span class="built_in">break</span>;</div><div class="line">        cur-&gt;left=buildTRee(inorder,iLeft,i-1,postorder,pLeft,pLeft+i-iLeft-1);</div><div class="line">        cur-&gt;right=buildTRee(inorder,i+1,iRight,postorder,pLeft+i-iLeft,pRight-1);</div><div class="line">        <span class="built_in">return</span> cur;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>//思路：<br>iLeft、iRight是inorder中最左和最右起始点，pLeft、pRight是postorder中最左和最右起始点，i - iLeft 是计算inorder中根节点位置和左边起始点的距离。这个题首先找规律，后序数组中最后一个元素肯定是总的根节点，由此去中序数组中可以找到这个根节点的左子树和右子树，中序中找到的左子树个数也是后序中从起始点算起同样个数是左子树，左子树和右子树看成完整的树以同样的方式递归。</p>
 
@@ -530,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo-递归"><span class="nav-number">1.1.</span> <span class="nav-text">Demo(递归)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">1.1.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo-递归"><span class="nav-number">1.2.</span> <span class="nav-text">Demo(递归)</span></a></li></ol></li></ol></div>
             
 
           </div>
