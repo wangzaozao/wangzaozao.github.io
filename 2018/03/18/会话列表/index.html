@@ -94,13 +94,13 @@
 <meta property="og:site_name" content="In me the tiger sniffs the rose">
 <meta property="og:description" content="Description Demo1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include &amp;lt;iostream&amp;gt;#include &amp;lt;vector&amp;gt;#include &amp;lt;numeric&amp;gt;#include &amp;lt;limits&amp;gt;#inc">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/03/18/会话列表/1.1.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/03/18/会话列表/1.2.jpg">
-<meta property="og:updated_time" content="2018-03-18T14:29:49.781Z">
+<meta property="og:image" content="http://yoursite.com/2018/03/18/会话列表/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/03/18/会话列表/2.jpg">
+<meta property="og:updated_time" content="2018-03-18T14:41:34.916Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网易游戏笔试之会话列表">
 <meta name="twitter:description" content="Description Demo1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include &amp;lt;iostream&amp;gt;#include &amp;lt;vector&amp;gt;#include &amp;lt;numeric&amp;gt;#include &amp;lt;limits&amp;gt;#inc">
-<meta name="twitter:image" content="http://yoursite.com/2018/03/18/会话列表/1.1.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/18/会话列表/1.jpg">
 
 
 
@@ -359,9 +359,9 @@
       
 
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p><img src="/2018/03/18/会话列表/1.1.jpg" alt="1"><br><img src="/2018/03/18/会话列表/1.2.jpg" alt="2"></p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p><img src="/2018/03/18/会话列表/1.jpg" alt="1"><br><img src="/2018/03/18/会话列表/2.jpg" alt="2"></p>
 <h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;vector&gt;</span></div><div class="line"><span class="comment">#include &lt;numeric&gt;</span></div><div class="line"><span class="comment">#include &lt;limits&gt;</span></div><div class="line"><span class="comment">#include &lt;algorithm&gt;</span></div><div class="line"><span class="comment">#include &lt;queue&gt;</span></div><div class="line"><span class="comment">#include &lt;set&gt;</span></div><div class="line"><span class="comment">#include &lt;map&gt;	</span></div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	int T;</div><div class="line">	cin &gt;&gt; T;</div><div class="line">	vector&lt;vector&lt;int&gt;&gt; ret;</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (int t = 0; t &lt; T; ++t)</div><div class="line">	&#123;</div><div class="line">		int N;</div><div class="line">		cin &gt;&gt; N;</div><div class="line">		<span class="built_in">set</span>&lt;int&gt; s;</div><div class="line">		vector&lt;int&gt; v(N);</div><div class="line">		vector&lt;int&gt; temp;</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (int n = 0; n &lt; N; ++n) cin &gt;&gt; v[n];</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (int i = N - 1; i &gt;= 0; --i)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (s.find(v[i]) == s.end()) temp.push_back(v[i]);</div><div class="line">			s.insert(v[i]);</div><div class="line">		&#125;</div><div class="line">		ret.push_back(temp);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (int i = 0; i &lt; ret.size(); ++i)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">for</span> (int j = 0; j &lt; ret[i].size(); ++j)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (j == ret[i].size() - 1)</div><div class="line">				cout &lt;&lt; ret[i][j];</div><div class="line">			<span class="keyword">else</span></div><div class="line">				cout &lt;&lt; ret[i][j] &lt;&lt; <span class="string">" "</span>;</div><div class="line">		&#125;</div><div class="line">		cout &lt;&lt; endl;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>思路：<br>这个题其实不难，当时做的时候忘了查询函数了。就是将原来数组倒序查询，然后查询用来存数的数组之前有没有这个数，没有就保存，有就不保存，正好可以用set保存这些数的集合，并能用set的查询函数</p>
+<p>思路：<br>这个题其实不难，当时做的时候忘了查询函数了。就是将原来数组倒序查询，然后查询用来存数的数组之前有没有这个数，没有就保存，有就不保存，正好可以用set保存这些数的集合，并能用set的查询函数。</p>
 
       
     </div>
@@ -402,8 +402,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/18/表达式求值/" rel="prev" title="网易游戏之表达式求值">
-                网易游戏之表达式求值 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/18/表达式求值/" rel="prev" title="网易游戏笔试之表达式求值">
+                网易游戏笔试之表达式求值 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
